@@ -2,6 +2,7 @@
 
 {% block title %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/swara.css') }}">
+<script src="{{url_for('static', filename='scripts/swara.js')}}"></script>
 <title>SWARA</title>
 {% endblock %}
 
@@ -9,9 +10,107 @@
 {% include 'partials/header.html'  %}
 <h2 class="headline">SWARA</h2>
 
-<div class="calculator-container container-lg">
-
+<div class="container"style="max-width: 700px;">
     <h1 style="color: white;">Calculator</h1>
+    
+        <div id="inputFormExpert" class=" mb-3">
+            <label style="color: white;">Experts</label>
+            <div class="input-group">
+                <input id="experts-list" type="text" name="experts" class="form-control m-input" placeholder="Enter expert names" autocomplete="off">
+                <!-- <div class="input-group-append">
+                    <button id="removeExpert" type="button" class="btn btn-danger">Remove</button>
+                </div> -->
+            </div>
+            <small id="expertHelpBlock" class="form-text text-muted">
+                Enter expert names separated by comma
+            </small>
+        </div>
+        
+        
+        
+        <div class="accordion" id="dataAccordian">
+            <div class="card">
+              <div class="card-header" id="mainCriteriaHeading">
+                <h5 class="mb-0">
+                  <button class="btn btn-link p-0" type="button" data-toggle="collapse" data-target="#collapseMainCriteria" aria-expanded="true" aria-controls="collapseMainCriteria">
+                    Main Criteria
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseMainCriteria" class="collapse show" aria-labelledby="headingOne" data-parent="#dataAccordian">
+                <div class="card-body">
+                    <div id="inputFormMainCriteria" class=" mb-3">
+                        <!-- <label >Main Criteria</label> -->
+                        <div class="input-group">
+                            <input id="main-criteria-list" type="text" name="main-criteria" class="form-control m-input" placeholder="Enter main criteria" autocomplete="off">
+                        </div>
+                        <small id="mainCriteriaHelpBlock" class="form-text text-muted">
+                            Enter all the main criteria separated by comma
+                        </small>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="subCriteriaHeading">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed p-0" type="button" data-toggle="collapse" data-target="#collapseSubCriteria" aria-expanded="false" aria-controls="collapseSubCriteria">
+                    Sub-Criteria
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseSubCriteria" class="collapse" aria-labelledby="subCriteriaHeading" data-parent="#dataAccordian">
+                <div id="sub-criteria-card-body" class="card-body">
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="importanceHeading">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseImportance" aria-expanded="false" aria-controls="collapseImportance">
+                    Importance
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseImportance" class="collapse" aria-labelledby="importanceHeading" data-parent="#dataAccordian">
+                <div id="imporance-card-body" class="card-body">
+                
+                </div>
+              </div>
+            </div>
+        <h2 style="color: white;">Experts Count</h2>
+        <h2 id="experts-count" style="color: white;" >0</h2>
+        <h2 style="color: white;">Main Criteria Count</h2>
+        <h2 id="main-criteria-count" style="color: white;" >0</h2>
+        <h2 style="color: white;">Sub-Criteria Count</h2>
+        <h2 id="sub-criteria-count" style="color: white;" >0</h2>
+        <h2 style="color: white;">Comparative Significance</h2>
+    
+    
+    <!-- <form method="post" action="">
+    <h2 style="color: white;">Experts</h1>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="inputFormExpert">
+                    <div class="input-group mb-3">
+                        <input type="text" name="title[]" class="form-control m-input" placeholder="Enter expert name" autocomplete="off">
+                        <div class="input-group-append">
+                            <button id="removeExpert" type="button" class="btn btn-danger">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="newExpert"></div>
+                <button id="addExpert" type="button" class="btn btn-info">Add Expert</button>
+                <button id="comleteAddingExperts" type="button" class="btn btn-info">Done</button>
+            </div>
+        </div>
+
+    </form> -->
+</div>
+<!-- <div class="calculator-container container-lg">
     <div class="row align-items-center">
         <div class="col-2">
             <h1 style="color: white;">Criteria</h1>
@@ -19,46 +118,12 @@
         <div class="col-1"><button class="add">Add</button></div>
     </div>
     <form action="http://localhost:5000/swara" method="POST">
-        <!-- <div class="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd">
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox"> Remember me</label>
-        </div> -->
         <div id="criteria"></div>
 
         <button type="submit" class="btn btn-default">Submit</button>
         <input type="hidden" value="0" id="total_chq">
     </form>
-</div>
-<script>
-    $('.add').on('click', add);
-    $('.remove').on('click', remove);
+</div> -->
 
-    function add() {
-        event.preventDefault();
-        var new_chq_no = parseInt($('#total_chq').val()) + 1;
-        var new_input = "<div class='col-6'><h3>Criterion #" + new_chq_no +
-            "</h3><input type='text' id='new_criterion_" + new_chq_no + "'></div>";
 
-        $('#criteria').append(new_input);
-
-        $('#total_chq').val(new_chq_no);
-    }
-
-    function remove() {
-        event.preventDefault();
-        var last_chq_no = $('#total_chq').val();
-
-        if (last_chq_no > 0) {
-            $('#new_criterion_' + last_chq_no).remove();
-            $('#total_chq').val(last_chq_no - 1);
-        }
-    }
-</script>
 {% endblock %}
