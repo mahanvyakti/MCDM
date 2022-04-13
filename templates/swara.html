@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/swara.css') }}">
+<title>SWARA</title>
+{% endblock %}
+
+{% block content %}
+{% include 'partials/header.html'  %}
+<h2 class="headline">SWARA</h2>
+
+<div class="calculator-container container-lg">
+
+    <h1 style="color: white;">Calculator</h1>
+    <div class="row align-items-center">
+        <div class="col-2">
+            <h1 style="color: white;">Criteria</h1>
+        </div>
+        <div class="col-1"><button class="add">Add</button></div>
+    </div>
+    <form action="http://localhost:5000/swara" method="POST">
+        <!-- <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd">
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div> -->
+        <div id="criteria"></div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+        <input type="hidden" value="0" id="total_chq">
+    </form>
+</div>
+<script>
+    $('.add').on('click', add);
+    $('.remove').on('click', remove);
+
+    function add() {
+        event.preventDefault();
+        var new_chq_no = parseInt($('#total_chq').val()) + 1;
+        var new_input = "<div class='col-6'><h3>Criterion #" + new_chq_no +
+            "</h3><input type='text' id='new_criterion_" + new_chq_no + "'></div>";
+
+        $('#criteria').append(new_input);
+
+        $('#total_chq').val(new_chq_no);
+    }
+
+    function remove() {
+        event.preventDefault();
+        var last_chq_no = $('#total_chq').val();
+
+        if (last_chq_no > 0) {
+            $('#new_criterion_' + last_chq_no).remove();
+            $('#total_chq').val(last_chq_no - 1);
+        }
+    }
+</script>
+{% endblock %}

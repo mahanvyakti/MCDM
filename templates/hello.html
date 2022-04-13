@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+{% if name %}
+{% block title %}
+<title>Hello {{ name }}!</title>
+{% endblock %}
+<h1>Hello {{ name }}!</h1>
+
+<div>
+    <form action="http://localhost:5000/result" method="POST">
+        <p>Name <input type="text" name="Name" /></p>
+        <input type="submit" value="submit" />
+        <input type="text" />
+        <button class="add">Add</button>
+        <button class="remove">remove</button>
+        <div id="new_chq"></div>
+        <input type="hidden" value="1" id="total_chq" />
+    </form>
+</div>
+{% else %}
+<h1>Hello, World!</h1>
+<div>
+    <form action="http://localhost:5000/result" method="POST">
+        <p>Name <input type="text" name="Name" /></p>
+        <p><input type="submit" value="submit" /></p>
+        <input type="text">
+        <button class="add">Add</button>
+        <button class="remove">remove</button>
+        <div id="new_chq"></div>
+        <input type="hidden" value="1" id="total_chq">
+    </form>
+</div>
+
+<h1>{{result}}</h1>
+{% endif %}
+<script>
+    $('.add').on('click', add);
+    $('.remove').on('click', remove);
+
+    function add() {
+        event.preventDefault();
+        var new_chq_no = parseInt($('#total_chq').val()) + 1;
+        var new_input = "<input type='text' id='new_" + new_chq_no + "'>";
+
+        $('#new_chq').append(new_input);
+
+        $('#total_chq').val(new_chq_no);
+    }
+
+    function remove() {
+        event.preventDefault();
+        var last_chq_no = $('#total_chq').val();
+
+        if (last_chq_no > 1) {
+            $('#new_' + last_chq_no).remove();
+            $('#total_chq').val(last_chq_no - 1);
+        }
+    }
+</script>
+
+{% endblock %}

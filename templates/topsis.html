@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/topsis.css') }}">
+<title>TOPSIS</title>
+{% endblock %}
+
+{% block content %}
+<div id="title">
+    <center>
+        <h1 style="color:white">OUR TEAM</h1>
+
+
+        <p>
+            <h3 style="color: white">We are a group of 4 engineering undergrads coming from diverse backgrounds and
+                interests and are interested in helping people understand MCDM Techniques in a better manner! Here's
+                some info about us!
+        </p>
+        </h3>
+    </center>
+
+</div><br>
+
+<div id="profiles">
+
+    <center>
+
+        <p>
+            <h1 id="name">Abhinav Zanwar</h1>
+        </p>
+        <p>
+            <h1 id="name">Jayant Yadav</h1>
+        </p>
+        <p>
+            <h1 id="name">Nimish Nimbalkar</h1>
+        </p>
+        <a href="http://www.linkedin.com/in/ishaaaan" style="color: white" target=_blank>
+            <p>
+                <h1 id="name">Ishan Shinde</h1>
+            </p>
+        </a>
+
+
+    </center>
+
+</div>
+{% endblock %}

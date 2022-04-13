@@ -1,0 +1,27 @@
+#logo {
+    height: 105.2px;
+    width: 304.8px;
+}
+#maintitle {
+    padding: 5px 5px 5px 0;
+    background: rgba(0, 0, 0, .6);
+    color: white;
+}
+
+.headline{
+    text-align: center;
+    padding-bottom: 5px;
+    background: rgba(0, 0, 0, .6);
+    color: white;
+    font-size: 1rem;
+}
+
+body {
+    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://kjsce.somaiya.edu/upload_file/images20/JVB_0002.JPG);
+    background-size: cover;
+    background-position: center;
+}
+
+.calculator-container{
+    
+}

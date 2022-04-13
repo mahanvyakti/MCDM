@@ -1,0 +1,29 @@
+body {
+
+    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://kjsce.somaiya.edu/upload_file/images20/JVB_0002.JPG);
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+
+#title {
+    color: white;
+    background: rgba(0, 0, 0, .6);
+    padding: 1px;
+
+}
+
+#profiles {
+    color: white;
+    background: rgba(0, 0, 0, .6);
+    padding: 20px;
+
+}
+
+#name:hover {
+
+    color: #3df5ff;
+    transform: scale(1.1);
+}
