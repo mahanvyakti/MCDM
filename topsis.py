@@ -85,7 +85,7 @@ def get_inputs():
 
     return alternatives, criteria
 
-def normalize_matrix(alternatives, criteria):
+def normalize_matrix(alternatives, criteria, matrix):
     """
         Performs Column-wise normalization of the input
         matrix created.
@@ -117,7 +117,7 @@ def normalize_matrix(alternatives, criteria):
 
     return normalized_matrix
 
-def weighted_normalization(normalized_matrix):
+def weighted_normalization(normalized_matrix, weights):
     """
         Performs Multiplication of each normalized value 
         with its corresponding criteria weight.
@@ -143,7 +143,7 @@ def weighted_normalization(normalized_matrix):
 
     return weight_normalized_matrix
 
-def get_best_and_worst_alteratives(wt_norm_matrix):
+def get_best_and_worst_alteratives(wt_norm_matrix, beneficial):
     """
       Selects j_plus and j_minus values  for each criteria depending 
       on whether it is beneficial or non-beneficial.
@@ -197,7 +197,7 @@ def get_l2_distances(wt_norm_matrix, j_plus, j_minus):
         
         dib.append(math.sqrt(best_diff_sum))
         diw.append(math.sqrt(worst_diff_sum))
- 
+
     return dib ,diw
 
 def calculate_similarity(dib, diw):
@@ -236,11 +236,12 @@ def sortResults(alternatives, siw):
 
 def printResults(sortedRes):
     """
-      Prints the sorted list with corresponding ranking
-       
+        Prints the sorted list with corresponding ranking
+
         Parameters:
         ------- 
-       'sortedRes': Sorted List of Alternatives and siw values
+        'sortedRes': Sorted List of Alternatives and siw values
+        
         Returns:
         -------
         none
@@ -250,11 +251,21 @@ def printResults(sortedRes):
     for (index, name_siw_pair) in enumerate(sortedRes):
         print(str(index + 1) + ".\t\t" + name_siw_pair[0], "\t\t" + str(name_siw_pair[1]))
 
+def get_result(alternatives, criteria, matrix, beneficial, weights ):
+    normalized_matrix = normalize_matrix(alternatives, criteria, matrix)
+    weight_normalized_matrix = weighted_normalization(normalized_matrix, weights)
+    j_plus, j_minus = get_best_and_worst_alteratives(weight_normalized_matrix, beneficial)
+    dib ,diw = get_l2_distances(weight_normalized_matrix, j_plus, j_minus)
+    siw = calculate_similarity(dib, diw)
+    sortedRes = sortResults(alternatives, siw)
+    printResults(sortedRes)
+    return sortedRes
+
 if __name__ == "__main__":
     alternatives, criteria = get_inputs()
-    normalized_matrix = normalize_matrix(alternatives, criteria)
-    weight_normalized_matrix = weighted_normalization(normalized_matrix)
-    j_plus, j_minus = get_best_and_worst_alteratives(weight_normalized_matrix)
+    normalized_matrix = normalize_matrix(alternatives, criteria, matrix)
+    weight_normalized_matrix = weighted_normalization(normalized_matrix, weights)
+    j_plus, j_minus = get_best_and_worst_alteratives(weight_normalized_matrix, beneficial)
     dib ,diw = get_l2_distances(weight_normalized_matrix, j_plus, j_minus)
     siw = calculate_similarity(dib, diw)
     sortedRes = sortResults(alternatives, siw)

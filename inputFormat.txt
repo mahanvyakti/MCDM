@@ -1,0 +1,34 @@
+Required Inputs:
+1. main_sj (OrderedDict)
+2. sub_sj (OrderedDict)
+3. sub_to_main (dict)
+
+Data sent in the GET request:
+1. main_sj (array of arrays)
+-> [
+        ["main_criterion_1", mean_sj_1],
+        ["main_criterion_2", mean_sj_2],
+        ["main_criterion_3", mean_sj_3],
+   ]
+
+2. sub_sj (array of arrays)
+-> [
+        ["sub_criterion_1", mean_sj_1],
+        ["sub_criterion_2", mean_sj_2],
+        ["sub_criterion_3", mean_sj_3],
+   ]
+
+3. sub_to_dict (dict)
+-> {
+    "sub_1": "main_1",
+    "sub_2": "main_1",
+    .
+    .
+    .
+    "sub_m": "main_y",
+    "sub_n": "main_y",
+   }
+
+Required Processing:
+On the server side, convert main_sj and sub_sj arrays into OrderedDicts
+

@@ -127,7 +127,6 @@ def sortByImportance(main_importance, sub_importance):
 
     return sorted_main_importance, sorted_sub_importance
 
-
 def get_main_sj_values(sorted_main_criteria, experts):
     """
     Gets sj values of every main criterion and returns dictionary of 
@@ -174,8 +173,8 @@ def get_sub_sj_values(sorted_sub_criteria, experts):
             contains list of criteria names and corresponding importance ratings
             Eg:
                 [
-                    ["sub criterion 1", 5],
                     ["sub criterion 2", 7],
+                    ["sub criterion 1", 5],
                     ["sub criterion 3", 1],
                 ]
             ]
@@ -279,7 +278,7 @@ def calculate_weights(sj_dict):
     return kj_dict, qj_dict, wj_dict
 
 
-def calculate_global_weights(wj_main, wj_sub):
+def calculate_global_weights(wj_main, wj_sub, sub_to_main):
     """
        Calculates global weight values.
         
@@ -319,7 +318,7 @@ def sort_sub_criteria(global_weigths):
     return rank_dict
 
 
-def print_results(criteria_dict, wj_main, wj_sub, ranks):
+def print_results(criteria_dict, wj_main, wj_sub, ranks, global_weights):
     """
       Prints the sorted list with corresponding ranking
        
@@ -333,34 +332,54 @@ def print_results(criteria_dict, wj_main, wj_sub, ranks):
         -------
         Sorted List of criteria names, relative & global weights and rank.
     """
-
+    res = ""
     print("\nThe Ranking:\n")
+    res += "\nThe Ranking:\n"
     main_index = 1
     for main_criterion, sub_criteria in criteria_dict.items():
         print("\nSr. No.\t\tMain Criterion\tRelative Weight")
+        res+= "\nSr. No.\t\tMain Criterion\tRelative Weight"
         main_rel_wt = wj_main.get(main_criterion)
         print(f"{main_index}\t\t{main_criterion}\t\t{main_rel_wt}\n" )
-        
+        res+=f"{main_index}\t\t{main_criterion}\t\t{main_rel_wt}\n"
         print("  Sr. No.\tSub Criteria\tGlobal Weights\t\tRank")
         for sub_index, sub_criterion in enumerate(sub_criteria):
             rank = ranks.get(sub_criterion)
             global_wt = global_weights.get(sub_criterion)
-            print("  " + chr(sub_index + 97) + ".\t\t" + sub_criterion, "\t\t" + str(global_wt) + "\t" + str(rank))
+            print("  " + str(chr(sub_index + 97)) + ".\t\t" + str(sub_criterion)+ "\t\t" + str(global_wt) + "\t" + str(rank))
+            res += "  " + str(chr(sub_index + 97)) + ".\t\t" + str(sub_criterion)+ "\t\t" + str(global_wt) + "\t" + str(rank)
         
         main_index +=1
         print("\n"+ "-"*60)
+        res+= "\n"+ "-"*60
 
+    return res
 
-if __name__ == "__main__":
-    criteria_dict, main_importance, sub_importance, sorted_main_imp, sorted_sub_imp, main_sj, sub_sj = get_inputs()
-    
+def get_result(main_sj, sub_sj, sub_to_main, criteria_dict):
     kj_main, qj_main, wj_main = calculate_weights(main_sj)
     kj_sub, qj_sub, wj_sub =  calculate_weights(sub_sj)
 
     # get global weigths
-    global_weights = calculate_global_weights(wj_main, wj_sub)
+    global_weights = calculate_global_weights(wj_main, wj_sub, sub_to_main)
 
     # sort on the basis of global weights
     ranks = sort_sub_criteria(global_weights)
 
-    print_results(criteria_dict, wj_main, wj_sub, ranks)
+    res = print_results(criteria_dict, wj_main, wj_sub, ranks, global_weights)
+
+    return res
+
+
+# if __name__ == "__main__":
+#     criteria_dict, main_importance, sub_importance, sorted_main_imp, sorted_sub_imp, main_sj, sub_sj = get_inputs()
+    
+#     kj_main, qj_main, wj_main = calculate_weights(main_sj)
+#     kj_sub, qj_sub, wj_sub =  calculate_weights(sub_sj)
+
+#     # get global weigths
+#     global_weights = calculate_global_weights(wj_main, wj_sub, sub_to_main)
+
+#     # sort on the basis of global weights
+#     ranks = sort_sub_criteria(global_weights)
+
+#    print_results(criteria_dict, wj_main, wj_sub, ranks)
