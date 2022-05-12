@@ -19,6 +19,10 @@ def topsis():
 def swara():
     return render_template('swara.html')
 
+@app.route('/swaraResult')
+def swaraRes():
+    return render_template('swaraResult.html')
+
 @app.route('/contact')
 def contact():
     return render_template('contactUs.html')
@@ -94,8 +98,8 @@ def resultSWARA():
         for sub_criterion, main_criterion in sub_to_main.items():
             criteria_dict[main_criterion].append(sub_criterion)
 
-        res = swara_result(main_sj, sub_sj, sub_to_main, criteria_dict)
-        return render_template('hello.html', name=res)
+        res, kj_main, qj_main, wj_main, kj_sub, qj_sub, wj_sub, criteria_dict, ranks, global_weights = swara_result(main_sj, sub_sj, sub_to_main, criteria_dict)
+        return render_template('swaraResult.html', res=res, kj_main=kj_main, qj_main=qj_main, wj_main=wj_main, kj_sub=kj_sub, qj_sub=qj_sub, wj_sub=wj_sub, criteria_dict=criteria_dict, ranks=ranks, global_weights=global_weights)
         # return redirect(url_for('result',data=request.form.get("data")),code=307)
 
 
@@ -109,8 +113,8 @@ def resulTOPSIS():
     weights = getWeights(form_dict['weights'][0].split(","))
     matrix = get_criteria_values(form_dict['criteria_values'][0].split(","), alternatives, criteria)
 
-    res = topsis_result(alternatives, criteria, matrix, beneficial, weights)
-    return render_template('hello.html', name=res)
+    normalized_matrix, weight_normalized_matrix, j_plus, j_minus, dib ,diw, sortedRes = topsis_result(alternatives, criteria, matrix, beneficial, weights)
+    return render_template('topsisResults.html', alternatives=alternatives, criteria=criteria, matrix=matrix, beneficial=beneficial, normalized_matrix=normalized_matrix, weight_normalized_matrix=weight_normalized_matrix, j_plus=j_plus, j_minus=j_minus, dib=dib ,diw=diw, sortedRes=sortedRes)
 
 
 @app.route('/result',methods = ['GET', 'POST'])

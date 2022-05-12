@@ -259,7 +259,7 @@ def get_result(alternatives, criteria, matrix, beneficial, weights ):
     siw = calculate_similarity(dib, diw)
     sortedRes = sortResults(alternatives, siw)
     printResults(sortedRes)
-    return sortedRes
+    return normalized_matrix, weight_normalized_matrix, j_plus, j_minus, dib ,diw, sortedRes
 
 if __name__ == "__main__":
     alternatives, criteria = get_inputs()

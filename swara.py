@@ -367,7 +367,7 @@ def get_result(main_sj, sub_sj, sub_to_main, criteria_dict):
 
     res = print_results(criteria_dict, wj_main, wj_sub, ranks, global_weights)
 
-    return res
+    return res, kj_main, qj_main, wj_main, kj_sub, qj_sub, wj_sub, criteria_dict, ranks, global_weights
 
 
 # if __name__ == "__main__":
