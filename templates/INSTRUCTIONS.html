@@ -1,0 +1,113 @@
+{% block title %}
+<title>INSTRUCTIONS</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/INSTRUCTIONS.CSS') }}">
+{% endblock %}
+
+{% block content %}
+{% include 'partials/header.html' %}
+
+<body>
+
+
+    <div id="navbar">
+        <a href="https://codepen.io/jayant_jry/full/zYpqXaM" target="_blank" id="navinfo">
+            <p> MCDM THEORY </p>
+        </a>
+
+        <a href="/instructions" id="navinfo">
+            <p>INSTRUCTIONS MANUAL</p>
+        </a>
+
+        <a href="#MCDM SIMULATOR" id="navinfo">
+            <p>MCDM SIMULATOR</p>
+        </a>
+
+        <a href="https://kjsce.somaiya.edu/en" id="navinfo" target="_blank">
+            <p>ABOUT KJSCE</p>
+        </a>
+
+        <a href="/contact" id="navinfo">
+            <p> CONTACT US</p>
+        </a>
+
+    </div><br><br>
+
+
+    <center>
+        <h1 style="color: white"><u>INSTRUCTIONS MANUAL</u></h1>
+    </center>
+
+    <div id="SWARA">
+        <h2>A) SWARA</h2>
+        <p>
+        <ol>
+
+            <li>Click on ‘MCDM Simulator’ on the Navigation Bar.</li><br>
+
+            <li>Click on ‘SWARA’ Button under the MCDM Techniques.</li><br>
+
+            <li>A new interface of SWARA Calculator opens up.
+                Enter the names of experts separated by comma in the Expert Input Box.</li><br>
+
+            <li>Click on ‘Main Criteria’ and enter all the main criterion separated by comma.</li><br>
+
+            <li>Click on ‘Sub-Criteria’ and enter the Sub-criterion for each main criteria as the input box prompts.
+            </li><br>
+
+            <li>Click on ‘Main Criteria Importance Values’ and enter the Importance Values for each Main Criteria by
+                each expert. The Importance Values must be between 1-7.</li><br>
+
+            <li>Click on ‘Sub-Criteria Importance Values’ and enter the Importance Values for each Sub-Criteria by each
+                expert.</li><br>
+
+            <li>Click on ‘Edit Criteria Details’ if you want to edit any of the above information else Click ‘ Add
+                Comparative Significance’</li><br>
+
+            <li>Click on ‘Main Criteria Comparative Significance Values’.The Comparative Significance Value for the
+                first Main criteria or Sub-Criteria after sorting is by default given as 0.</li><br>
+
+            <li>Add the subsequent comparative significance values for the main criterion by each expert. These values
+                must strictly be between 0-1.</li><br>
+
+            <li>Click on ‘Sub-Criteria Comparative Significance Values’ and add the subsequent comparative significance
+                values for the sub-criterion by each expert.</li><br>
+
+            <li>Click on ‘Get Results’ to get all the Intermediate as well as Final Results.</li>
+            </p>
+        </ol>
+    </div>
+    <br>
+
+    <div id="TOPSIS">
+        <h2>B) TOPSIS</h2>
+        <ol>
+            <li>Click on ‘MCDM Simulator’ on the Navigation Bar.</li><br>
+
+            <li>Click on ‘TOPSIS’ Button under the MCDM Techniques.</li><br>
+
+            <li>A new interface of TOPSIS Calculator opens up.</li><br>
+
+            <li>Enter all the names of criteria separated by comma in the Criteria Input Box. </li><br>
+
+            <li>Similarly, enter all the Alternatives separated by comma in the Alternatives Input Box </li><br>
+
+            <li>Click on ‘Weights’ and enter the weights for all the Criteria as prompted.</li><br>
+
+            <li>Click on ‘Beneficiality’ and select all the criteria that are beneficial.</li><br>
+
+            <li>Click on ‘Edit Criteria and Alternatives’ if you want to edit any of the
+                above information else Click ‘ Add Criteria Values’</li><br>
+
+            <li>Click on ‘Criteria Values’ and enter all the criteria values for each
+                alternative in the corresponding boxes.</li><br>
+
+            <li>Click on ‘Get Results’ to get all the Intermediate as well as Final Results.</li><br>
+
+        </ol>
+
+
+    </div>
+
+
+
+    {% endblock %}

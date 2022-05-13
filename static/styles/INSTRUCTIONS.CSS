@@ -1,0 +1,68 @@
+#maintitle {
+
+    padding: 5px;
+    background: rgba(0, 0, 0, .6);
+    color: white;
+
+
+}
+
+#logo {
+
+    height: 105.2px;
+    width: 304.8px;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    color: white;
+    background: black;
+    border: .5px solid white;
+
+
+}
+
+#navinfo {
+    color: white;
+
+}
+
+
+#navinfo:hover {
+    transform: scale(1.1);
+    color: #3df5ff;
+
+}
+
+
+
+#SWARA {
+
+    margin: auto;
+    color: white;
+    border: 2.5px solid white;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+#TOPSIS {
+
+
+    margin: auto;
+    color: white;
+    border: 2.5px solid white;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+
+body {
+    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://kjsce.somaiya.edu/upload_file/images20/JVB_0002.JPG);
+    background-size: cover;
+    background-position: center;
+
+}

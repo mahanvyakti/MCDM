@@ -6,6 +6,12 @@ from topsis import get_result as topsis_result
 
 app = Flask(__name__)
 
+import os
+
+IMAGES = os.path.join('static', 'images')
+
+app.config['UPLOAD_FOLDER'] = IMAGES
+
 @app.route('/')
 def mainPage():
     return render_template('mainpage.html')
@@ -124,3 +130,15 @@ def result():
 
 if __name__ == '__main__':
     app.run(debug = True)
+
+
+@app.route('/instructions')
+def instructions():
+    return render_template('INSTRUCTIONS.html')
+
+
+@app.route('/theory')
+def theory():
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'Capture.JPG')
+    full_filename2 = os.path.join(app.config['UPLOAD_FOLDER'], 'Capture2.JPG')
+    return render_template('theory.html',user_image = full_filename, user_image2 = full_filename2)
