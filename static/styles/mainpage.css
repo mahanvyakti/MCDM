@@ -1,85 +1,93 @@
-#maintitle {
-    padding: 5px 5px 5px 0;
-    background: rgba(0, 0, 0, .6);
-    color: white;
-}
-
-.headline {
-    text-align: center;
-    padding-bottom: 5px;
-    background: rgba(0, 0, 0, .6);
-    color: white;
-    font-size: 1rem;
-}
-
-#navbar {
-    width: 99.5%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    border: .5px solid white;
-}
-
-#navinfo {
-    color: white;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: large;
-}
-
-#navinfo:hover {
-    transform: scale(1.1);
-    color: #3df5ff;
-}
-
-#aform {
-    width: 75%;
-    height: 50%;
-    margin: auto;
-    color: white;
-    border: 2.5px solid white;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-#bform {
-    width: 75%;
-    height: 50%;
-    margin: auto;
-    color: white;
-    border: 2.5px solid white;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.5)
-}
-
-button {
-    padding: 15px;
-    color: white;
-    background: black;
-    font-family: georgia;
-    border: 1.5px solid white;
-}
-
-button:hover {
-    color: blue;
-    transform: scale(1.2);
-}
-
-#dropdown {
-    width: 175px;
-    height: 25px
-}
-
-body {
-    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(http://www.sbgimiraj.org/upload/images/mechdipl.gif);
-    background-size: cover;
-    background-position: center;
-}
-
-#logo {
-    height: 105.2px;
-    width: 304.8px;
-}
+            #maintitle {
+                padding: 5px 5px 5px 0;
+                background: rgba(0, 0, 0, .6);
+                color: white;
+            }
+            
+            .headline {
+                text-align: center;
+                padding-bottom: 5px;
+                /* background: rgba(0, 0, 0, .6); */
+                color: white;
+                font-size: 1rem;
+            }
+            
+            #navbar {
+                width: 99.5%;
+                height: 100%;
+                display: flex;
+                position: relative;
+                justify-content: space-evenly;
+                padding: 5px;
+                color: white;
+                background: rgba(0, 0, 0, 0.5);
+                border: .5px solid white;
+                width: 99.9%;
+                height: 60%;
+            }
+            
+            #navinfo {
+                color: white;
+                margin-top: 10px;
+                text-decoration: none;
+                font-size: 20px;
+                font-family: "Times New Roman";
+                text-decoration: none;
+                font-size: large;
+            }
+            
+            #navinfo:hover {
+                transform: scale(1.1);
+                color: #3df5ff;
+            }
+            
+            #aform {
+                width: 75%;
+                height: 50%;
+                margin: auto;
+                color: white;
+                border: 2.5px solid white;
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.5);
+                font-family: "Times New Roman";
+            }
+            
+            #bform {
+                width: 75%;
+                height: 50%;
+                margin: auto;
+                color: white;
+                border: 2.5px solid white;
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.5);
+                font-family: "Times New Roman"
+            }
+            
+            button {
+                padding: 15px;
+                color: white;
+                background: black;
+                font-family: georgia;
+                border: 1.5px solid white;
+            }
+            
+            button:hover {
+                color: blue;
+                transform: scale(1.2);
+            }
+            
+            #dropdown {
+                width: 175px;
+                height: 25px
+            }
+            
+            body {
+                background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://www.fundingshield.com/wp-content/uploads/2020/01/cogs-1.gif);
+                background-size: cover;
+                background-position: center;
+            }
+            
+            #logo {
+                height: 105.2px;
+                width: 304.8px;
+            }

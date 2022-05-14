@@ -4,6 +4,19 @@ body {
     background-position: center;
 }
 
+#maintitle {
+    padding: 5px 5px 5px 0;
+    background: rgba(0, 0, 0, .6);
+    color: white;
+}
+
+.headline {
+    text-align: center;
+    padding-bottom: 5px;
+    color: white;
+    font-size: 1rem;
+}
+
 #title {
     color: white;
     background: rgba(0, 0, 0, .6);
@@ -19,4 +32,32 @@ body {
 #name:hover {
     color: #3df5ff;
     transform: scale(1.1);
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 8px;
+    color: white;
+    background: black;
+    border: .5px solid white;
+    width: 99.9%;
+}
+
+#navinfo {
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: "Times New Roman"
+}
+
+#logo {
+    height: 105.2px;
+    width: 304.8px;
+}
+
+#navinfo:hover {
+    transform: scale(1.1);
+    color: #3df5ff;
 }
