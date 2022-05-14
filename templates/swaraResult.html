@@ -1,219 +1,231 @@
-{% extends "base.html" %}
-
-{% block title %}
+{% extends "base.html" %} {% block title %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/swaraResult.css') }}">
-<script src="{{url_for('static', filename='scripts/swara.js')}}"></script>
-<title>SWARA</title>
-{% endblock %}
 
-{% block content %}
-{% include 'partials/header.html'  %}
+<title>Result SWARA</title>
+{% endblock %} {% block content %} {% include 'partials/header.html' %}
 <!-- <h2 class="headline">SWARA Result</h2> -->
 
 
-    <div id="title">
-        <center>
-            <h1 style="color:white">Swara: Results</h1>
-    </div>
+<div id="title">
+    <center>
+        <h1 style="color:white">Swara: Results</h1>
+</div>
 
-    <br>
-
-
-    <div id="kjval">
-        <h2> 1) Kj VALUES: </h2>
-        <h3> a) Main-Criterion: </h3>
-        <!-- table for Main Criterion -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;">
-            <tr>
-                <th>Name</th>
-                <th>Kj</th>
-            </tr>
-            {%for main_criterion, kj in kj_main.items()%}
-            <tr>
-                <td>{{main_criterion}}</td>
-                <td>{{kj}}</td>
-            </tr>
-            {%endfor%}
-        </table>
-
-        <h3> b) Sub-Criterion: </h3>
-        <!-- table for sub-criterion -->
-        <table style="width: 100%; height: 100%;" border="4" bordercolor="green">
-            <tr>
-                <th>Main Criteria</th>
-                <th>Sub Criteria</th>
-                <th>Kj Values</th>
-            </tr>
-            {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
-            <tr>
-                <td>{{main_criterion}}</td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{sub_criterion}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{kj_sub[sub_criterion]}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-            </tr>
-            {%endfor%}
-        </table>
-    </div> <br>
+<br>
 
 
-    <div id="qjval">
-        <h2> 2) Qj VALUES: </h2>
-        <h3> a) Main-Criterion: </h3>
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;">
-            <tr>
-                <th>Name</th>
-                <th>Qj</th>
-            </tr>
-            {%for main_criterion, qj in qj_main.items()%}
-            <tr>
-                <td>{{main_criterion}}</td>
-                <td>{{qj}}</td>
-            </tr>
-            {%endfor%}
-        </table>
-        <h3> b) Sub-Criterion: </h3>
-        <table  border="4" bordercolor="green" style="width: 100%; height: 100%;">
-            <tr>
-                <th>Main Criteria</th>
-                <th>Sub Criteria</th>
-                <th>Qj Values</th>
-            </tr>
-            {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
-            <tr>
-                <td>{{main_criterion}}</td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{sub_criterion}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{qj_sub[sub_criterion]}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-            </tr>
-            {%endfor%}
-        </table>
-    </div><br>
+<script type="text/javascript">
+    function validate(form) {
 
-    <div id="RelWt">
-        <h2> 3) RELATIVE WEIGHTS: </h2>
-        <h3> a) Main-Criterion: </h3>
-        <!-- table for main criterion -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;">
-            <tr>
-                <th>Name</th>
-                <th>Wj</th>
-            </tr>
-            {%for main_criterion, wj in wj_main.items()%}
-            <tr>
-                <td>{{main_criterion}}</td>
-                <td>{{wj}}</td>
-            </tr>
-            {%endfor%}
-        </table>
-        <h3> b) Sub-Criterion: </h3>
-        <!-- nested table for subcriterion -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;">
-            <tr>
-                <th>Main Criteria</th>
-                <th>Sub Criteria</th>
-                <th>Wj Values</th>
-            </tr>
-            {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
-            <tr>
-                <td>{{main_criterion}}</td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{sub_criterion}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{wj_sub[sub_criterion]}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-            </tr>
-            {%endfor%}
-        </table>
-    </div><br>
+        var names = document.getElementById('kjval').value;
+        var namess = document.getElementById('kjval');
+        var name3 = /^[0-9]*$/;
+        if (name3.test(names)) {
+            namess.style.border = "green solid 3px";
+            document.getElementById("myForm").submit();
+            return true;
+        } else {
+            namess.style.border = "red solid 3px";
+            return false;
+        }
+
+    }
+</script>
+<div id="kjval">
+    <h2 style="color:white; font-family:Times New Roman"> 1. K<sub>j</sub> VALUES: </h2>
+    <h3 style="color:white; font-family:Times New Roman"> a) Main-Criterion: </h3>
+    <!-- table for Main Criterion -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <tr class="table-primary">
+            <th>Name</th>
+            <th>K<sub>j</sub></th>
+        </tr>
+        {%for main_criterion, kj in kj_main.items()%}
+        <tr>
+            <td>{{main_criterion}}</td>
+            <td>{{kj}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+
+    <h3 style="color:white; font-family:Times New Roman"> b) Sub-Criterion: </h3>
+    <!-- table for sub-criterion -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <tr class="table-primary">
+            <th>Main Criteria</th>
+            <th>Sub Criteria</th>
+            <th>Kj Values</th>
+        </tr>
+        {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
+        <tr>
+            <td>{{main_criterion}}</td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{sub_criterion}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{kj_sub[sub_criterion]}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+</div> <br>
 
 
-    <div id="RelWt">
-        <h2> 4) FINAL RANKINGS: </h2>
-        <!-- nested table for final rankings -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;">
-            <tr>
-                <th>Main Criteria</th>
-                <th>Sub Criteria</th>
-                <th>Global Weights</th>
-                <th>Rank</th>
-            </tr>
-            {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
-            <tr>
-                <td>{{main_criterion}}</td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{sub_criterion}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{global_weights[sub_criterion]}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-                <td>
-                    <table border="2" bordercolor="blue" style="width: 100%;">
-                        {%for sub_criterion in sub_criteria_list%}
-                        <tr>
-                            <td>{{ranks[sub_criterion]}}</td>
-                        </tr>
-                        {%endfor%}
-                    </table>
-                </td>
-            </tr>
-            {%endfor%}
-        </table>
+<div id="qjval">
+    <h2 style="color:white; font-family:Times New Roman"> 2. Qj VALUES: </h2>
+    <h3 style="color:white; font-family:Times New Roman"> a) Main-Criterion: </h3>
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <tr class="table-primary">
+            <th>Name</th>
+            <th>Qj</th>
+        </tr>
+        {%for main_criterion, qj in qj_main.items()%}
+        <tr>
+            <td>{{main_criterion}}</td>
+            <td>{{qj}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    <h3 style="color:white; font-family:Times New Roman"> b) Sub-Criterion: </h3>
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <tr class="table-primary">
+            <th>Main Criteria</th>
+            <th>Sub Criteria</th>
+            <th>Qj Values</th>
+        </tr>
+        {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
+        <tr>
+            <td>{{main_criterion}}</td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{sub_criterion}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{qj_sub[sub_criterion]}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+</div><br>
 
-    </div>
+<div id="RelWt">
+    <h2 style="color:white; font-family:Times New Roman"> 3. RELATIVE WEIGHTS: </h2>
+    <h3 style="color:white; font-family:Times New Roman"> a) Main-Criterion: </h3>
+    <!-- table for main criterion -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <tr class="table-primary">
+            <th>Name</th>
+            <th>Wj</th>
+        </tr>
+        {%for main_criterion, wj in wj_main.items()%}
+        <tr>
+            <td>{{main_criterion}}</td>
+            <td>{{wj}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    <h3 style="color:white; font-family:Times New Roman"> b) Sub-Criterion: </h3>
+    <!-- nested table for subcriterion -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <tr class="table-primary">
+            <th>Main Criteria</th>
+            <th>Sub Criteria</th>
+            <th>Wj Values</th>
+        </tr>
+        {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
+        <tr>
+            <td>{{main_criterion}}</td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{sub_criterion}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{wj_sub[sub_criterion]}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+</div><br>
+
+
+<div id="RelWt">
+    <h2 style="color:white; font-family:Times New Roman"> 4. FINAL RANKINGS: </h2>
+    <!-- nested table for final rankings -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <tr class="table-primary">
+            <th>Main Criteria</th>
+            <th>Sub Criteria</th>
+            <th>Global Weights</th>
+            <th>Rank</th>
+        </tr>
+        {%for main_criterion, sub_criteria_list in criteria_dict.items()%}
+        <tr>
+            <td>{{main_criterion}}</td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{sub_criterion}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{global_weights[sub_criterion]}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+            <td>
+                <table style="width: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+                    {%for sub_criterion in sub_criteria_list%}
+                    <tr>
+                        <td>{{ranks[sub_criterion]}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+
+</div>
 
 {% endblock %}

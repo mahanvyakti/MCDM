@@ -1,20 +1,16 @@
-{% extends "base.html" %}
-{% block title %}
+{% extends "base.html" %} {% block title %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/contactUsPage.css') }}">
 <title>Contact Us</title>
-{% endblock %}
-{% block content %}
-    {% include 'partials/header.html'  %}
-    
+{% endblock %} {% block content %} {% include 'partials/header.html' %}
+
+<br>
 <div id="title">
     <center>
-        <h1 style="color:white">OUR TEAM</h1>
+        <h1 style="color:white; font-family:Times New Roman">OUR TEAM</h1>
 
 
         <p>
-            <h3 style="color: white">We are a group of 4 engineering undergrads coming from diverse backgrounds and
-                interests and are interested in helping people understand MCDM Techniques in a better manner! Here's
-                some info about us!
+            <h3 style="color: white; font-family:Times New Roman">We are a group of 4 engineering undergrads coming from diverse backgrounds and interests and are interested in helping people understand MCDM Techniques in a better manner! Here's some info about us!
         </p>
         </h3>
     </center>
@@ -22,33 +18,54 @@
 </div><br>
 <br><br>
 
-<div id="profiles">
-
-    <center>
-
-        <a href="http://www.linkedin.com/in/abhinavzanvar" style="color: white" target=_blank>
-          <p>
-            <h1 id="name">Abhinav Zanvar</h1>
-          </p>
-        </a>
-        <a href="http://www.linkedin.com/in/ishaaaan" style="color: white" target=_blank>
-          <p>
-            <h1 id="name">Jayant Yadav</h1>
-          </p>
-        </a>
-        <a href="http://www.linkedin.com/in/nimishnimbalkar" style="color: white" target=_blank>
-          <p>
-            <h1 id="name">Nimish Nimbalkar</h1>
-          </p>
-        </a>
-        <a href="http://www.linkedin.com/in/ishaaaan" style="color: white" target=_blank>
-            <p>
-                <h1 id="name">Ishan Shinde</h1>
-            </p>
-        </a>
 
 
-    </center>
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <img src="/static/images/n.jpg" alt="Nimish" style="width:100% height:150%">
+            <div class="container">
+                <h2>Nimish Nimbalkar</h2>
+                <p class="title">Member 1</p>
+                <p>nimish.n@somaiya.edu</p>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+
+            <img src="/static/images/a.jpg" alt="Abhinav" style="width:100%">
+            <div class="container">
+                <h2>Abhinav Zanvar</h2>
+                <p class="title">Member 2</p>
+                <p>abhinav.z@somaiya.edu</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="/static/images/I.jpg" style="width:100%">
+            <div class="container">
+                <h2>Ishan Shinde</h2>
+                <p class="title">Member 3</p>
+                <p>ishan.shinde@somaiya.edu</p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="/static/images/j.png" style="width:100%">
+            <div class="container">
+                <h2>Jayant Yadav</h2>
+                <p class="title">Member 4</p>
+                <p>jayant.yadav@somaiya.edu</p>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 {% endblock %}

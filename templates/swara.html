@@ -1,44 +1,40 @@
-{% extends "base.html" %}
-
-{% block title %}
+{% extends "base.html" %} {% block title %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/swara.css') }}">
 <script src="{{url_for('static', filename='scripts/swara.js')}}"></script>
 <title>SWARA</title>
-{% endblock %}
-
-{% block content %}
-{% include 'partials/header.html'  %}
+{% endblock %} {% block content %} {% include 'partials/header.html' %}
 <h2 class="headline">SWARA</h2>
 
-<div class="container"style="max-width: 700px;">
+
+<div class="container" style="max-width: 700px;">
     <h1 style="color: white;">Calculator</h1>
-    
-        <div id="inputFormExpert" class=" mb-3">
-            <label style="color: white;">Experts</label>
-            <div class="input-group">
-                <input id="experts-list" type="text" name="experts" class="form-control m-input" placeholder="Enter expert names" autocomplete="off">
-                <!-- <div class="input-group-append">
+
+    <div id="inputFormExpert" class=" mb-3">
+        <label style="color: white;">Experts</label>
+        <div class="input-group">
+            <input id="experts-list" type="text" name="experts" class="form-control m-input" placeholder="Enter expert names" autocomplete="off">
+            <!-- <div class="input-group-append">
                     <button id="removeExpert" type="button" class="btn btn-danger">Remove</button>
                 </div> -->
-            </div>
-            <small id="expertHelpBlock" class="form-text text-muted">
+        </div>
+        <small id="expertHelpBlock" class="form-text text-muted">
                 Enter expert names separated by comma
             </small>
-        </div>
-        
-        
-        
-        <div class="accordion" id="dataAccordian">
-            <div class="card">
-              <div class="card-header accordion-header" id="mainCriteriaHeading">
+    </div>
+
+
+
+    <div class="accordion" id="dataAccordian">
+        <div class="card">
+            <div class="card-header accordion-header" id="mainCriteriaHeading">
                 <h5 class="mb-0 ">
-                  <button class="btn btn-link p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseMainCriteria" aria-expanded="true" aria-controls="collapseMainCriteria">
+                    <button class="btn btn-link p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseMainCriteria" aria-expanded="true" aria-controls="collapseMainCriteria">
                     Main Criteria
                   </button>
                 </h5>
-              </div>
-          
-              <div id="collapseMainCriteria" class="accordion-collapse  collapse show" aria-labelledby="headingOne" data-parent="#dataAccordian">
+            </div>
+
+            <div id="collapseMainCriteria" class="accordion-collapse  collapse show" aria-labelledby="headingOne" data-parent="#dataAccordian">
                 <div class="card-body">
                     <div id="inputFormMainCriteria" class=" mb-3">
                         <!-- <label >Main Criteria</label> -->
@@ -50,121 +46,121 @@
                         </small>
                     </div>
                 </div>
-              </div>
             </div>
+        </div>
 
-            <div class="card">
-              <div class="card-header" id="subCriteriaHeading">
+        <div class="card">
+            <div class="card-header" id="subCriteriaHeading">
                 <h5 class="mb-0">
-                  <button class="btn btn-link collapsed p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseSubCriteria" aria-expanded="false" aria-controls="collapseSubCriteria">
+                    <button class="btn btn-link collapsed p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseSubCriteria" aria-expanded="false" aria-controls="collapseSubCriteria">
                     Sub-Criteria
                   </button>
                 </h5>
-              </div>
-              <div id="collapseSubCriteria" class="accordion-collapse collapse" aria-labelledby="subCriteriaHeading" data-parent="#dataAccordian">
-                <div id="sub-criteria-card-body" class="card-body">
-                  <p>Please enter main criteria first !</p>
-                </div>
-              </div>
             </div>
+            <div id="collapseSubCriteria" class="accordion-collapse collapse" aria-labelledby="subCriteriaHeading" data-parent="#dataAccordian">
+                <div id="sub-criteria-card-body" class="card-body">
+                    <p>Please enter main criteria first !</p>
+                </div>
+            </div>
+        </div>
 
-            <div class="card">
-              <div class="card-header" id="mainCriteriaImportanceHeading">
+        <div class="card">
+            <div class="card-header" id="mainCriteriaImportanceHeading">
                 <h5 class="mb-0">
-                  <button class="btn btn-link collapsed p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseMainCriteriaImportance" aria-expanded="false" aria-controls="collapseMainCriteriaImportance">
+                    <button class="btn btn-link collapsed p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseMainCriteriaImportance" aria-expanded="false" aria-controls="collapseMainCriteriaImportance">
                     Main Criteria Importance
                   </button>
                 </h5>
-              </div>
-              <div id="collapseMainCriteriaImportance" class="accordion-collapse collapse" aria-labelledby="mainCriteriaImportanceHeading" data-parent="#dataAccordian">
-                <div id="main-criteria-importance-card-body" class="card-body">
-                  <p>Please enter names of experts first !</p>
-                  
-                </div>
-              </div>
             </div>
+            <div id="collapseMainCriteriaImportance" class="accordion-collapse collapse" aria-labelledby="mainCriteriaImportanceHeading" data-parent="#dataAccordian">
+                <div id="main-criteria-importance-card-body" class="card-body">
+                    <p>Please enter names of experts first !</p>
 
-            <div class="card">
-              <div class="card-header" id="subCriteriaImportanceHeading">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="subCriteriaImportanceHeading">
                 <h5 class="mb-0">
-                  <button class="btn btn-link collapsed p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseSubCriteriaImportance" aria-expanded="false" aria-controls="collapseSubCriteriaImportance">
+                    <button class="btn btn-link collapsed p-0 dataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseSubCriteriaImportance" aria-expanded="false" aria-controls="collapseSubCriteriaImportance">
                     Sub-Criteria Importance
                   </button>
                 </h5>
-              </div>
-              <div id="collapseSubCriteriaImportance" class="accordion-collapse collapse" aria-labelledby="subCriteriaImportanceHeading" data-parent="#dataAccordian">
-                <div id="sub-criteria-importance-card-body" class="card-body">
-                  <p>Please enter names of experts first !</p>
-                  
-                </div>
-              </div>
-          </div>
-
-            <div class="container my-5 d-flex justify-content-center">
-              <div class="row">
-                <div class="col-sm py-2">
-                  <button id="editCriteriaDetails" type="button" class="btn btn-info" disabled>Edit Criteria Details</button>
-                </div>
-                <div class="col-sm py-2">
-                  <button id="sortImportance" type="button" class="btn btn-warning">Add Comparative Significance</button>
-                </div>
-              </div>
             </div>
-            
-            <div class="accordion" id="sjDataAccordian">
-              <div class="card">
+            <div id="collapseSubCriteriaImportance" class="accordion-collapse collapse" aria-labelledby="subCriteriaImportanceHeading" data-parent="#dataAccordian">
+                <div id="sub-criteria-importance-card-body" class="card-body">
+                    <p>Please enter names of experts first !</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container my-5 d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm py-2">
+                    <button id="editCriteriaDetails" type="button" class="btn btn-info" disabled>Edit Criteria Details</button>
+                </div>
+                <div class="col-sm py-2">
+                    <button id="sortImportance" type="button" class="btn btn-warning">Add Comparative Significance</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion" id="sjDataAccordian">
+            <div class="card">
                 <div class="card-header" id="mainCriteriaSjHeading">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed p-0 sjDataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseMainCriteriaSj" aria-expanded="false" aria-controls="collapseMainCriteriaSj" disabled>
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed p-0 sjDataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseMainCriteriaSj" aria-expanded="false" aria-controls="collapseMainCriteriaSj" disabled>
                       Main Criteria Comparative Significance Values
                     </button>
-                  </h5>
+                    </h5>
                 </div>
                 <div id="collapseMainCriteriaSj" class="accordion-collapse collapse" aria-labelledby="mainCriteriaSjHeading" data-parent="#dataAccordian">
-                  <div id="main-criteria-sj-values-card-body" class="card-body">
-                    <p>Please enter names of experts first !</p>
-                  </div>
+                    <div id="main-criteria-sj-values-card-body" class="card-body">
+                        <p>Please enter names of experts first !</p>
+                    </div>
                 </div>
-              </div>
+            </div>
 
-              <div class="card">
+            <div class="card">
                 <div class="card-header" id="subCriteriaSjHeading">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed p-0 sjDataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseSubCriteriaSj" aria-expanded="false" aria-controls="collapseSubCriteriaSj" disabled>
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed p-0 sjDataAccordionButton" type="button" data-toggle="collapse" data-target="#collapseSubCriteriaSj" aria-expanded="false" aria-controls="collapseSubCriteriaSj" disabled>
                       Sub-Criteria Comparative Significance Values
                     </button>
-                  </h5>
+                    </h5>
                 </div>
                 <div id="collapseSubCriteriaSj" class="accordion-collapse collapse" aria-labelledby="subCriteriaSjHeading" data-parent="#sjDataAccordian">
-                  <div id="sub-criteria-sj-values-card-body" class="card-body">
-                    <p>Please enter names of experts first !</p>
-                  </div>
+                    <div id="sub-criteria-sj-values-card-body" class="card-body">
+                        <p>Please enter names of experts first !</p>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="container my-5 d-flex justify-content-center">
-                  <button id="submitForm" type="button" class="btn btn-success" disabled>Get Results</button>
-            </div>
+        </div>
+        <div class="container my-5 d-flex justify-content-center">
+            <button id="submitForm" type="button" class="btn btn-success" disabled>Get Results</button>
+        </div>
 
-            <div>
-              <h2 style="color: white;">Experts Count</h2>
-              <h2 id="experts-count" style="color: white;" >0</h2>
-              <h2 style="color: white;">Main Criteria Count</h2>
-              <h2 id="main-criteria-count" style="color: white;" >0</h2>
-              <h2 style="color: white;">Sub-Criteria Count</h2>
-              <h2 id="sub-criteria-count" style="color: white;" >0</h2>
-              <h2 style="color: white;">Comparative Significance</h2>
-            </div>
-            <div>
-              <form  id="requiredDataForm" method="post" action="/resultSWARA" hidden>
+        <div>
+            <h2 style="color: white;">Experts Count</h2>
+            <h2 id="experts-count" style="color: white;">0</h2>
+            <h2 style="color: white;">Main Criteria Count</h2>
+            <h2 id="main-criteria-count" style="color: white;">0</h2>
+            <h2 style="color: white;">Sub-Criteria Count</h2>
+            <h2 id="sub-criteria-count" style="color: white;">0</h2>
+            <h2 style="color: white;">Comparative Significance</h2>
+        </div>
+        <div>
+            <form id="requiredDataForm" method="post" action="/resultSWARA" hidden>
                 <input type="hidden" name="sub_to_main" id="sub_to_main">
                 <input type="hidden" name="main_sj" id="main_sj">
                 <input type="hidden" name="sub_sj" id="sub_sj">
                 <button type="submit" hidden id="submitRequiredDataForm"></button>
-              </form>
-            </div>
-    
-    <!-- <form method="post" action="">
+            </form>
+        </div>
+
+        <!-- <form method="post" action="">
     <h2 style="color: white;">Experts</h1>
         
         <div class="row">
@@ -185,7 +181,7 @@
         </div>
 
     </form> -->
-        </div>
+    </div>
 </div>
 <!-- <div class="calculator-container container-lg">
     <div class="row align-items-center">
