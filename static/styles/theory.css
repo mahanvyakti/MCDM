@@ -1,3 +1,4 @@
+
 #maintitle {
     padding: 5px 5px 5px 0;
     background: rgba(0, 0, 0, .6);
@@ -7,35 +8,34 @@
 .headline{
     text-align: center;
     padding-bottom: 5px;
-    /* background: rgba(0, 0, 0, .6); */
+    margin-top: -1%;
     color: white;
     font-size: 1rem;
 }
 
+#logo {
+
+    height: 105.2px;
+    width: 304.8px;
+}
+
+
 #navbar {
-    width: 99.5%;
-    height: 100%;
     display: flex;
-    position: relative;
     justify-content: space-evenly;
-    padding: 5px;
+    padding: 3px;
     color: white;
-    background: rgba(0, 0, 0, 0.5);
+    background: black;
     border: .5px solid white;
     width: 99.9%;
-    height: 60%;
 }
 
 #navinfo {
-
     color: white;
-    margin-top:10px ;
     text-decoration: none;
+    margin-top:10px ;
     font-size: 20px;
     font-family: "Times New Roman"
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: large;
 }
 
 
@@ -46,63 +46,51 @@
 }
 
 
+#TheorySWARA {
 
 
-#aform {
-
-    width: 75%;
-    height: 50%;
     margin: auto;
     color: white;
     border: 2.5px solid white;
     padding: 8px;
     background: rgba(0, 0, 0, 0.5);
-    font-family: "Times New Roman"
+
 }
 
-#bform {
+#TheoryTOPSIS {
 
-    width: 75%;
-    height: 50%;
+
     margin: auto;
     color: white;
     border: 2.5px solid white;
     padding: 8px;
     background: rgba(0, 0, 0, 0.5);
-    font-family: "Times New Roman"
+
 }
 
+#TheoryBASICS {
 
-button {
 
-    padding: 15px;
+    margin: auto;
     color: white;
-    background: black;
-    font-family: georgia;
-    border: 1.5px solid white;
-
+    border: 2.5px solid white;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.5);
 
 }
 
-button:hover {
 
-    color: blue;
-    transform: scale(1.2);
-}
-
-#dropdown {
-
-    width: 175px;
-    height: 25px
-}
 
 body {
-    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(http://www.sbgimiraj.org/upload/images/mechdipl.gif);
+    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://kjsce.somaiya.edu/upload_file/images20/JVB_0002.JPG);
     background-size: cover;
     background-position: center;
+
 }
 
-#logo {
-    height: 105.2px;
-    width: 304.8px;
+#capture{
+
+    width: 60%;
+    height: 90%;
+
 }
