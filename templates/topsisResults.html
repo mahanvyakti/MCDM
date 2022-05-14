@@ -1,168 +1,162 @@
-{% extends "base.html" %}
-
-{% block title %}
+{% extends "base.html" %} {% block title %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/swaraResult.css') }}">
-<script src="{{url_for('static', filename='scripts/swara.js')}}"></script>
-<title>SWARA</title>
-{% endblock %}
 
-{% block content %}
-{% include 'partials/header.html'  %}
+<title>Result TOPSIS</title>
+{% endblock %} {% block content %} {% include 'partials/header.html' %}
 <!-- <h2 class="headline">SWARA Result</h2> -->
 
 
-    <div id="title">
-        <center>
-            <h1 style="color:white">Topsis: Results</h1>
-    </div>
+<div id="title">
+    <center>
+        <h1 style="color:white; font-family:Times New Roman">Topsis: Results</h1>
+</div>
 
-    <br>
+<br>
 
-    <div id="matrix">
-        <h2> 1) Input Matrix: </h2>
-        <!-- table for Normailized Matrix -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;" class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">alt\crit</th>
-                    {%for criterion in criteria %}
-                        <th scope="col">{{criterion}}</th>
-                    {%endfor%}
-                </tr>
-            </thead>
-            {%for criteria_values in matrix %}
-            <tr>
-
-                <th scope="row">{{alternatives[loop.index0]}}</td>
-                {%for value in criteria_values%}
-                    <td>{{value}}</td>
+<div id="matrix">
+    <h2 style="color:white; font-family:Times New Roman"> 1. Input Matrix: </h2>
+    <!-- table for Normailized Matrix -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <thead>
+            <tr class="table-primary">
+                <th scope=" col ">Alt\Crit</th>
+                {%for criterion in criteria %}
+                <th scope="col ">{{criterion}}</th>
                 {%endfor%}
             </tr>
-            {%endfor%}
-        </table>
-    </div> 
+        </thead>
+        {%for criteria_Alternatives in matrix %}
+        <tr>
 
-    <div id="normalized_matrix">
-        <h2> 2) Normailized Matrix: </h2>
-        <!-- table for Normailized Matrix -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;" class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">alt\crit</th>
-                    {%for criterion in criteria %}
-                        <th scope="col">{{criterion}}</th>
-                    {%endfor%}
-                </tr>
-            </thead>
-            {%for  criteria_values in normalized_matrix%}
-            <tr>
+            <th scope="row ">{{alternatives[loop.index0]}}</td>
+                {%for Alternative in criteria_Alternatives%}
+                <td>{{Alternative}}</td>
+                {%endfor%}
+        </tr>
+        {%endfor%}
+    </table>
+</div>
 
-                <th scope="row">{{alternatives[loop.index0]}}</td>
-                {%for value in criteria_values%}
-                    <td>{{value}}</td>
+<div id="normalized_matrix ">
+    <h2 style="color:white; font-family:Times New Roman"> 2. Normailized Matrix: </h2>
+    <!-- table for Normailized Matrix -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col ">Alt\Crit</th>
+                {%for criterion in criteria %}
+                <th scope="col ">{{criterion}}</th>
                 {%endfor%}
             </tr>
-            {%endfor%}
-        </table>
+        </thead>
+        {%for criteria_Alternatives in normalized_matrix%}
+        <tr>
+
+            <th scope="row ">{{alternatives[loop.index0]}}</td>
+                {%for Alternative in criteria_Alternatives%}
+                <td>{{Alternative}}</td>
+                {%endfor%}
+        </tr>
+        {%endfor%}
+    </table>
 
 
-    </div> 
-    <br>
+</div>
+<br>
 
-    <div id="weight_normalized_matrix">
-        <h2> 3) Weight Normailized Matrix: </h2>
-        <!-- table for Normailized Matrix -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;" class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">alt\crit</th>
-                    {%for criterion in criteria %}
-                        <th scope="col">{{criterion}}</th>
-                    {%endfor%}
-                </tr>
-            </thead>
-            {%for  criteria_values in weight_normalized_matrix%}
-            <tr>
-
-                <th scope="row">{{alternatives[loop.index0]}}</td>
-                {%for value in criteria_values%}
-                    <td>{{value}}</td>
+<div id="weight_normalized_matrix ">
+    <h2 style="color:white; font-family:Times New Roman"> 3. Weight Normailized Matrix: </h2>
+    <!-- table for Normailized Matrix -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col ">Alt\Crit</th>
+                {%for criterion in criteria %}
+                <th scope="col ">{{criterion}}</th>
                 {%endfor%}
             </tr>
-            {%endfor%}
-        </table>
-    </div> 
-    <br>
+        </thead>
+        {%for criteria_Alternatives in weight_normalized_matrix%}
+        <tr>
 
-    <div id="best_and_worst_alteratives">
-        <h2> 4) Best and Worst Alternatives: </h2>
-        <!-- table for Normailized Matrix -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;" class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Criteria</th>
-                    <th scope="col">Beneficial</th>
-                    <th scope="col">J<sub>plus</sub></th>
-                    <th scope="col">J<sub>minus</sub></th>
-                </tr>
-            </thead>
-            {%for  criterion in criteria%}
-            <tr>
-                <th scope="row">{{criterion}}</td>
-                    {% if beneficial[loop.index0] %}
-                        <td>✔</td>
-                    {% else %}
-                        <td>❌</td>
-                    {% endif %}
+            <th scope="row ">{{alternatives[loop.index0]}}</td>
+                {%for Alternative in criteria_Alternatives%}
+                <td>{{Alternative}}</td>
+                {%endfor%}
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<br>
+
+<div id="best_and_worst_alteratives ">
+    <h2 style="color:white; font-family:Times New Roman"> 4. Best and Worst Alternatives: </h2>
+    <!-- table for Normailized Matrix -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col ">Criteria</th>
+                <th scope="col ">Beneficial</th>
+                <th scope="col ">J<sub>plus</sub></th>
+                <th scope="col ">J<sub>minus</sub></th>
+            </tr>
+        </thead>
+        {%for criterion in criteria%}
+        <tr>
+            <th scope="row ">{{criterion}}</td>
+                {% if beneficial[loop.index0] %}
+                <td>✔</td>
+                {% else %}
+                <td>❌</td>
+                {% endif %}
                 <td>{{j_plus[loop.index0]}}</td>
                 <td>{{j_minus[loop.index0]}}</td>
-                </tr>
-            {%endfor%}
-        </table>
-    </div> 
-    <br>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<br>
 
-    <div id="l2_distance">
-        <h2> 5) L2 Distance: </h2>
-        <!-- table for Normailized Matrix -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;" class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Alternatives</th>
-                    <th scope="col">Distance From Best Value (d<sub>ib</sub>)</th>
-                    <th scope="col">Distance From Worst Value (d<sub>iw</sub>)</th>
-                </tr>
-            </thead>
-            {%for alternative in alternatives%}
-            <tr>
-                <th scope="row">{{alternative}}</td>
+<div id="l2_distance ">
+    <h2 style="color:white; font-family:Times New Roman"> 5. Distance from Best and Worst Alternative: </h2>
+    <!-- table for Normailized Matrix -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col ">Alternatives</th>
+                <th scope="col ">Distance From Best Alternative (d<sub>ib</sub>)</th>
+                <th scope="col ">Distance From Worst Alternative (d<sub>iw</sub>)</th>
+            </tr>
+        </thead>
+        {%for alternative in alternatives%}
+        <tr>
+            <th scope="row ">{{alternative}}</td>
                 <td>{{dib[loop.index0]}}</td>
                 <td>{{diw[loop.index0]}}</td>
-                </tr>
-            {%endfor%}
-        </table>
-    </div> 
-    <br>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<br>
 
-    <div id="sorted_res">
-        <h2> 6) Sorted Result: </h2>
-        <!-- table for Normailized Matrix -->
-        <table border="4" bordercolor="green" style="width: 100%; height: 100%;" class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Rank</th>
-                    <th scope="col">Alternatives</th>
-                    <th scope="col">S<sub>iw</sub></th>
-                </tr>
-            </thead>
-            {%for alternative in alternatives%}
-            <tr>
-                <th scope="row">{{loop.index0 + 1}}</td>
+<div id="sorted_res ">
+    <h2 style="color:white; font-family:Times New Roman"> 6. Final Result: </h2>
+    <!-- table for Normailized Matrix -->
+    <table style="width: 100%; height: 100%; font-family:Times New Roman; border-color:rgb(162, 162, 201); text-align: center" class="table table-dark table-bordered">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col ">Rank</th>
+                <th scope="col ">Alternatives</th>
+                <th scope="col ">S<sub>iw</sub></th>
+            </tr>
+        </thead>
+        {%for alternative in alternatives%}
+        <tr>
+            <th scope="row ">{{loop.index0 + 1}}</td>
                 <td>{{sortedRes[loop.index0][0]}}</td>
                 <td>{{sortedRes[loop.index0][1]}}</td>
-                </tr>
-            {%endfor%}
-        </table>
-    </div> 
-    <br>
-{% endblock %}
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<br> {% endblock %}

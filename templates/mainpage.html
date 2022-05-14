@@ -1,12 +1,47 @@
-{% extends "base.html" %}
-
-{% block title %}
+{% extends "base.html" %} {% block title %}
 <title>MCDM: LY Project</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/mainpage.css') }}">
-{% endblock %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/mainpage.css') }}"> {% endblock %}
 
-{% block content %}
-    {% include 'partials/header.html'  %}
+<body>
+    {% block content %} {% include 'partials/header.html' %}
+
+
+    <script type="text/javascript">
+        function validate(form) {
+
+            var names = document.getElementById('name').value;
+            var namess = document.getElementById('name');
+            var insts = document.getElementById('inst').value;
+            var instss = document.getElementById('inst');
+            var gend = document.getElementById('dropdown').value;
+            var gen = document.getElementById('dropdown');
+
+
+            var name3 = /^[a-zA-Z ]*$/;
+            if (gen.value != "") {
+                gen.style.border = "green solid 3px";
+
+                if (name3.test(names)) {
+                    namess.style.border = "green solid 3px";
+                    if (name3.test(insts)) {
+                        instss.style.border = "green solid 3px";
+                        document.getElementById("myForm").submit();
+                        return true;
+                    } else {
+                        instss.style.border = "red solid 3px";
+                        return false;
+                    }
+
+                } else {
+                    namess.style.border = "red solid 3px";
+                    return false;
+                }
+            } else {
+                gen.style.border = "red solid 3px";
+                return false;
+            }
+        }
+    </script>
     <h2 class="headline">A Website for helping students and teachers to put those complex MCDM theories into practical use!</h2>
     <div id="navbar">
         <a href="/contact" id="navinfo">
@@ -42,9 +77,10 @@
 
         <div id="bform">
             <p>Liked Our Simulation? We would love to hear back from you: Praises, Critiscism, Suggestions are all welcome!</p>
-            <form action="">
-                <p>1. YOUR NAME: </p><input type="text" placeholder=" Name"><br>
-                <p>2. COLLEGE/INSTITUTION: </p><input type="text" placeholder=" COLLEGE/INSTITUTION:"><br>
+            <form id="myForm">
+
+                <p>1. YOUR NAME: </p><input type="text" id="name" placeholder="Name"><br>
+                <p>2. COLLEGE/INSTITUTION: </p><input type="text" id="inst" placeholder=" COLLEGE/INSTITUTION:"><br>
                 <p>3. DESIGNATION: </p>
                 <select name="DESIGNATION" id="dropdown">
                     <option value="Student">Student</option>
@@ -53,11 +89,14 @@
                     <option value="Industry">Industry</option>
                     <option value="Other">Other</option>
                 </select>
-                
+
                 <p>4. ENTER YOUR SUGGESTIONS BELOW:</p>
                 <textarea id="suggestions"> </textarea><br><br>
-                <button id="submit" type="submit"> <em>Submit</em></button>
+                <input type="button" onclick="validate()" value="Confirm ">
             </form>
+
         </div>
     </div>
-{% endblock %}
+    {% endblock %}
+
+</body>

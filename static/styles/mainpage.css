@@ -4,7 +4,7 @@
     color: white;
 }
 
-.headline{
+.headline {
     text-align: center;
     padding-bottom: 5px;
     background: rgba(0, 0, 0, .6);
@@ -19,27 +19,18 @@
     color: white;
     background: black;
     border: .5px solid white;
-
-
 }
 
 #navinfo {
     color: white;
-
 }
-
 
 #navinfo:hover {
     transform: scale(1.1);
     color: #3df5ff;
-
 }
 
-
-
-
 #aform {
-
     width: 75%;
     height: 50%;
     margin: auto;
@@ -47,11 +38,9 @@
     border: 2.5px solid white;
     padding: 8px;
     background: rgba(0, 0, 0, 0.5);
-
 }
 
 #bform {
-
     width: 75%;
     height: 50%;
     margin: auto;
@@ -61,32 +50,26 @@
     background: rgba(0, 0, 0, 0.5)
 }
 
-
 button {
-
     padding: 15px;
     color: white;
     background: black;
     font-family: georgia;
     border: 1.5px solid white;
-
-
 }
 
 button:hover {
-
     color: blue;
     transform: scale(1.2);
 }
 
 #dropdown {
-
     width: 175px;
     height: 25px
 }
 
 body {
-    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://kjsce.somaiya.edu/upload_file/images20/JVB_0002.JPG);
+    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://www.fundingshield.com/wp-content/uploads/2020/01/cogs-1.gif);
     background-size: cover;
     background-position: center;
 }

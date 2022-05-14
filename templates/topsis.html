@@ -1,15 +1,34 @@
-{% extends "base.html" %}
-{% block title %}
+{% extends "base.html" %} {% block title %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/topsis.css') }}">
 <script src="{{url_for('static', filename='scripts/topsis.js')}}"></script>
 <title>TOPSIS</title>
-{% endblock %}
+{% endblock %} {% block content %} {% include 'partials/header.html' %}
+<!-- <script type="text/javascript">
+    function validate(form) {
 
-{% block content %}
-{% include 'partials/header.html'  %}
+        var names = document.getElementById('criterion-weight-for--${criterionName}--${criterionIndex}').value;
+        var namess = document.getElementById('criterion-weight-for--${criterionName}--${criterionIndex}');
+        // var insts = document.getElementById('inst').value;
+        // var instss = document.getElementById('inst');
+        // var gend = document.getElementById('dropdown').value;
+        // var gen = document.getElementById('dropdown');
+
+
+        // 
+        var name3 = /^[0-9]*$/;
+        if (name3.test(names)) {
+            namess.style.border = "green solid 3px";
+            document.getElementById("").submit();
+            return true;
+        } else {
+            namess.style.border = "red solid 3px";
+            return false;
+        }
+    }
+</script> -->
 <h2 class="headline">TOPSIS</h2>
 <div id="title">
-    <div class="container"style="max-width: 700px;">
+    <div class="container" style="max-width: 700px;">
         <h1 style="color: white;">Calculator</h1>
         <div id="inputFormCriteria" class=" mb-3">
             <label style="color: white;">Criteria</label>
@@ -39,7 +58,7 @@
                         </button>
                     </h5>
                 </div>
-            
+
                 <div id="collapseWeights" class="accordion-collapse  collapse" aria-labelledby="headingOne" data-parent="#dataAccordian">
                     <div class="card-body">
                         <div id="inputFormWeights" class=" mb-3">
@@ -62,7 +81,7 @@
                         </button>
                     </h5>
                 </div>
-            
+
                 <div id="collapseBeneficial" class="accordion-collapse  collapse" aria-labelledby="headingOne" data-parent="#dataAccordian">
                     <div class="card-body">
                         <div id="inputFormBeneficial" class=" mb-3">
@@ -81,10 +100,10 @@
         <div class="container my-5 d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm py-2">
-                <button id="editDetails" type="button" class="btn btn-info" disabled>Edit Criteria and Alternatives</button>
+                    <button id="editDetails" type="button" class="btn btn-info" disabled>Edit Criteria and Alternatives</button>
                 </div>
                 <div class="col-sm py-2">
-                <button id="buildMatrix" type="button" class="btn btn-warning">Add Criteria Values</button>
+                    <button id="buildMatrix" type="button" class="btn btn-warning">Add Criteria Values</button>
                 </div>
             </div>
         </div>
@@ -93,7 +112,7 @@
             <div class="card">
                 <div class="card-header" id="criteriaValuesHeading">
                     <h5 class="mb-0">
-                    <button class="btn btn-link collapsed p-0 matrixAccordionButton" type="button" data-toggle="collapse" data-target="#collapseCriteriaValues" aria-expanded="false" aria-controls="collapseCriteriaValues" disabled>
+                        <button class="btn btn-link collapsed p-0 matrixAccordionButton" type="button" data-toggle="collapse" data-target="#collapseCriteriaValues" aria-expanded="false" aria-controls="collapseCriteriaValues" disabled>
                         Criteria Values
                     </button>
                     </h5>
@@ -109,7 +128,7 @@
         <div class="container my-5 d-flex justify-content-center">
             <button id="submitForm" type="button" class="btn btn-success" disabled>Get Results</button>
         </div>
-        <form  id="requiredDataForm" method="post" action="/resultTOPSIS" hidden>
+        <form id="requiredDataForm" method="post" action="/resultTOPSIS" hidden>
             <input type="hidden" name="criteria" id="criteria">
             <input type="hidden" name="alternatives" id="alternatives">
             <input type="hidden" name="beneficial" id="beneficial">
@@ -119,9 +138,9 @@
         </form>
         <div>
             <h2 style="color: white;">Criteria Count</h2>
-            <h2 id="criteria-count" style="color: white;" >0</h2>
+            <h2 id="criteria-count" style="color: white;">0</h2>
             <h2 style="color: white;">Alternatives Count</h2>
-            <h2 id="alternatives-count" style="color: white;" >0</h2>
+            <h2 id="alternatives-count" style="color: white;">0</h2>
         </div>
     </div>
 </div>

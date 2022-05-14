@@ -18,9 +18,9 @@ $(function() {
     $("#editDetails").on("click", enableDetailsEditing);
     $("#buildMatrix").on("click", generateMatrix);
     $("#submitForm").on("click", submitForm);
-    
-    function countAndUpdateLists(event){
-    
+
+    function countAndUpdateLists(event) {
+
         var name = event.target.name;
         var id = event.target.id;
         var list = $(`#${id}`).val();
@@ -28,28 +28,27 @@ $(function() {
         console.log(list);
         var splittedList = list.split(",");
         var cleanedList = [];
-    
+
         splittedList.forEach(element => {
             var trimmedElement = element.trim();
-            if(trimmedElement !== '')
+            if (trimmedElement !== '')
                 cleanedList.push(trimmedElement);
-            }
-        );
-        switch(id){
+        });
+        switch (id) {
             case "criteria-list":
                 $("#criteria-count").text(cleanedList.length);
                 criteria = cleanedList;
                 console.log(criteria);
-                
+
                 weights = {};
                 isBeneficial = {};
 
-                var weightsHTML = criteria.length == 0 ? "<p>Please enter criteria first!</p>" :  "";
-                var beneficialHTML = criteria.length == 0 ? "<p>Please enter criteria first!</p>" :  "";
-                
-                criteria.forEach((criterion, index)=>{
-                    weightsHTML     += weightsRowHTML(criterion, index);
-                    beneficialHTML  += beneficialCheckboxHTML(criterion, index);
+                var weightsHTML = criteria.length == 0 ? "<p>Please enter criteria first!</p>" : "";
+                var beneficialHTML = criteria.length == 0 ? "<p>Please enter criteria first!</p>" : "";
+
+                criteria.forEach((criterion, index) => {
+                    weightsHTML += weightsRowHTML(criterion, index);
+                    beneficialHTML += beneficialCheckboxHTML(criterion, index);
                     isBeneficial[`${criterion}-${index}`] = "N";
                 });
 
@@ -61,25 +60,25 @@ $(function() {
                 alternatives = cleanedList;
                 console.log(alternatives)
                 break;
-            
+
         }
-        if(id.includes("criterion-weight-for--")){
+        if (id.includes("criterion-weight-for--")) {
             var split = id.split("--");
-            
-            var criterionName = split[split.length-2];
-            var criterionIndex = split[split.length-1];
+
+            var criterionName = split[split.length - 2];
+            var criterionIndex = split[split.length - 1];
             weights[`${criterionName}-${criterionIndex}`] = cleanedList[0];
             console.log(weights);
         }
-        if(id.includes("criterion-value-for--")){
+        if (id.includes("criterion-value-for--")) {
             /// ${alternativeName}--${alternativeIndex}--${criterionName}--${criterionIndex}
             var split = id.split("--");
             var length = split.length;
 
-            var criterionIndex = split[length-1];
-            var criterionName = split[length-2];
-            var alternativeIndex = split[length-3];
-            var alternativeName = split[length-4];
+            var criterionIndex = split[length - 1];
+            var criterionName = split[length - 2];
+            var alternativeIndex = split[length - 3];
+            var alternativeName = split[length - 4];
 
             criteriva_values[`${alternativeName}-${alternativeIndex}-${criterionName}-${criterionIndex}`] = cleanedList[0];
             console.log("criteriva_values");
@@ -88,24 +87,24 @@ $(function() {
 
     }
 
-    function handleBeneficial(event){
+    function handleBeneficial(event) {
         var element = event.target;
         var id = event.target.id;
         var index = id.split("-")[0];
         var criterion = id.split("-")[1];
         console.log(id);
-        if(this.checked) {
+        if (this.checked) {
             console.log("Checked");
             isBeneficial[`${criterion}-${index}`] = "Y";
-        
-        }else{
+
+        } else {
             console.log("Not Checked");
             isBeneficial[`${criterion}-${index}`] = "N";
         }
         console.log(isBeneficial)
     }
-    
-    function beneficialCheckboxHTML(criterionName, criterionIndex){
+
+    function beneficialCheckboxHTML(criterionName, criterionIndex) {
         var html = "";
         html += "<div>"
         html += "<div class=' align-items-center'>";
@@ -117,9 +116,9 @@ $(function() {
         return html;
     }
 
-    function weightsRowHTML( criterionName, criterionIndex){
+    function weightsRowHTML(criterionName, criterionIndex) {
         var html = "";
-        
+
         html += "<div>"
         html += "<div class=' align-items-center'>";
         html += `<p class='mb-2 mr-6'>Weight for ${criterionName}</p>`;
@@ -127,21 +126,21 @@ $(function() {
         html += "</div>";
         html += "<hr/>";
         html += "</div>";
-    
+
         return html;
     }
 
-    function getCriteriaValuesHTML( alternativeName, alternativeIndex){
+    function getCriteriaValuesHTML(alternativeName, alternativeIndex) {
         var html = "";
         html += "<div>";
         html += `<h5>Enter criteria value for alternative ${alternativeName}</h5>`
-        
-        criteria.forEach((criterionName, criterionIndex)=>{
+
+        criteria.forEach((criterionName, criterionIndex) => {
             html += "<div>"
-            html +=     "<div class=' align-items-center'>";
-            html +=         `<p class='mb-2 mr-6'>Enter value of ${criterionName}</p>`;
-            html +=         `<input id='criterion-value-for--${alternativeName}--${alternativeIndex}--${criterionName}--${criterionIndex}' type='text' name='criterion-value-for-${alternativeName}-${alternativeIndex}-${criterionName}-${criterionIndex}' class='criterion-value-for-alternative ml-2 form-control m-input' placeholder='Enter criterion value of criterion ${criterionName} for ${alternativeName}' autocomplete='off'>`;
-            html +=     "</div>";
+            html += "<div class=' align-items-center'>";
+            html += `<p class='mb-2 mr-6'>Enter value of ${criterionName}</p>`;
+            html += `<input id='criterion-value-for--${alternativeName}--${alternativeIndex}--${criterionName}--${criterionIndex}' type='text' name='criterion-value-for-${alternativeName}-${alternativeIndex}-${criterionName}-${criterionIndex}' class='criterion-value-for-alternative ml-2 form-control m-input' placeholder='Enter criterion value of criterion ${criterionName} for ${alternativeName}' autocomplete='off'>`;
+            html += "</div>";
             // html += `<div id='inputFormSubCriteria-${mainCriterionName}-${mainCriterionIndex}' class=' mb-3'>`;
             // html += `<small id='subCriteriaHelpBlock-${mainCriterionName}-${mainCriterionIndex}' class='form-text text-muted'>`;
             // html += "Enter all the sub-criteria separated by comma";
@@ -152,22 +151,21 @@ $(function() {
 
         html += "<hr/>";
         html += "</div>";
-    
+
         return html;
     }
 
-    function toggleAllAccordions({editingCriteriaDetails=true}){
-        if(editingCriteriaDetails){
+    function toggleAllAccordions({ editingCriteriaDetails = true }) {
+        if (editingCriteriaDetails) {
             $('#matrixDataAccordian .collapse').collapse('hide');
-        }else
-        {
+        } else {
             $('#dataAccordian .collapse').collapse('hide');
         }
     }
 
-    function generateMatrix(event){
+    function generateMatrix(event) {
         event.preventDefault();
-        toggleAllAccordions({editingCriteriaDetails:true});
+        toggleAllAccordions({ editingCriteriaDetails: true });
 
         $(".weightsAccordionButton").attr("disabled", true);
         $(".beneficialAccordionButton").attr("disabled", true);
@@ -175,14 +173,14 @@ $(function() {
         $("#editDetails").attr("disabled", false);
         $("#buildMatrix").attr("disabled", true);
         $("#submitForm").attr("disabled", false);
-        
+
 
         $(".matrixAccordionButton").attr("disabled", false);
-        
+
         criteriva_values = {};
         var matrixHTML = "<div>";
-        alternatives.forEach((alternativeName, alternativeIndex)=>
-            matrixHTML += getCriteriaValuesHTML( alternativeName, alternativeIndex)
+        alternatives.forEach((alternativeName, alternativeIndex) =>
+            matrixHTML += getCriteriaValuesHTML(alternativeName, alternativeIndex)
         );
         matrixHTML += "</div>";
 
@@ -190,9 +188,9 @@ $(function() {
 
     }
 
-    function enableDetailsEditing(event){
+    function enableDetailsEditing(event) {
         event.preventDefault();
-        toggleAllAccordions({editingCriteriaDetails:true});
+        toggleAllAccordions({ editingCriteriaDetails: true });
 
         $(".weightsAccordionButton").attr("disabled", false);
         $(".beneficialAccordionButton").attr("disabled", false);
@@ -200,12 +198,13 @@ $(function() {
         $("#buildMatrix").attr("disabled", false);
         $("#editDetails").attr("disabled", true);
         $("#submitForm").attr("disabled", true);
-        
+
 
         $(".matrixAccordionButton").attr("disabled", true);
-    
+
     }
-    function submitForm(event){
+
+    function submitForm(event) {
         $("#criteria").val(criteria);
         $("#alternatives").val(alternatives);
         $("#beneficial").val(Object.entries(isBeneficial));
@@ -213,5 +212,5 @@ $(function() {
         $("#criteria_values").val(Object.entries(criteriva_values));
 
         $("#submitRequiredDataForm").trigger("click");
-    }   
+    }
 })
