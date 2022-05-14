@@ -4,34 +4,13 @@
 <title>MCDM: LY Project</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/mainpage.css') }}">
 {% endblock %}
-
 {% block content %}
     {% include 'partials/header.html'  %}
-    <h2 class="headline">A Website for helping students and teachers to put those complex MCDM theories into practical use!</h2>
-    <div id="navbar">
-        <a href="/theory" id="navinfo">
-            <p> THEORY </p>
-        </a>
-       
-        <a href="/instructions" id="navinfo">
-            <p>MCDM INSTRUCTIONS</p>
-        </a>
-        <a href="#MCDM SIMULATOR" id="navinfo">
-            <p>MCDM SIMULATOR</p>
-        </a>
-        <a href="https://kjsce.somaiya.edu/en" id="navinfo" target="_blank">
-            <p>ABOUT KJSCE</p>
-        </a>
-        <a href="/contact" id="navinfo">
-            <p> CONTACT US</p>
-        </a>
-    </div>
-    <br>
     <br>
     <div id="form">
         <div id="aform">
             <center>
-                <p id="MCDM SIMULATOR">Please select the MCDM Technique Do You Want To Use?</p>
+                <p style="font-family:Times New Roman;" id="MCDM SIMULATOR">Please select the MCDM Technique Do You Want To Use?</p>
                 <p>
                     <a href="/topsis"><button>TOPSIS: Technique for Order of Preference by Similarity to Ideal Solution</button></a>
                 </p>
@@ -42,12 +21,12 @@
         <br />
 
         <div id="bform">
-            <p>Liked Our Simulation? We would love to hear back from you: Praises, Critiscism, Suggestions are all welcome!</p>
+            <p style="font-family:Times New Roman;">Liked Our Simulation? We would love to hear back from you: Praises, Critiscism, Suggestions are all welcome!</p>
             <form action="">
-                <p>1. YOUR NAME: </p><input type="text" placeholder=" Name"><br>
-                <p>2. COLLEGE/INSTITUTION: </p><input type="text" placeholder=" COLLEGE/INSTITUTION:"><br>
-                <p>3. DESIGNATION: </p>
-                <select name="DESIGNATION" id="dropdown">
+                <p style="font-family:Times New Roman;">1. YOUR NAME: </p><input type="text" placeholder=" Name"><br>
+                <p style="font-family:Times New Roman;">2. COLLEGE/INSTITUTION: </p><input type="text" placeholder=" COLLEGE/INSTITUTION:"><br>
+                <p style="font-family:Times New Roman;">3. DESIGNATION: </p>
+                <select name="DESIGNATION" id="dropdown" style="font-family:Times New Roman;">
                     <option value="Student">Student</option>
                     <option value="Professor">Professor</option>
                     <option value="Researcher">Researcher</option>
@@ -55,7 +34,7 @@
                     <option value="Other">Other</option>
                 </select>
                 
-                <p>4. ENTER YOUR SUGGESTIONS BELOW:</p>
+                <p style="font-family:Times New Roman;">4. ENTER YOUR SUGGESTIONS BELOW:</p>
                 <textarea id="suggestions"> </textarea><br><br>
                 <button id="submit" type="submit"> <em>Submit</em></button>
             </form>

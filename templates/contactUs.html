@@ -3,8 +3,9 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/contactUsPage.css') }}">
 <title>Contact Us</title>
 {% endblock %}
-
 {% block content %}
+    {% include 'partials/header.html'  %}
+    
 <div id="title">
     <center>
         <h1 style="color:white">OUR TEAM</h1>
@@ -19,6 +20,7 @@
     </center>
 
 </div><br>
+<br><br>
 
 <div id="profiles">
 

@@ -1,10 +1,16 @@
 #maintitle {
-
-    padding: 5px;
+    padding: 5px 5px 5px 0;
     background: rgba(0, 0, 0, .6);
     color: white;
+}
 
-
+.headline{
+    text-align: center;
+    padding-bottom: 5px;
+    margin-top: -1%;
+   
+    color: white;
+    font-size: 1rem;
 }
 
 #logo {
@@ -15,20 +21,21 @@
 
 #navbar {
     display: flex;
-    justify-content: space-between;
-    padding: 5px;
+    justify-content: space-evenly;
+    
     color: white;
     background: black;
     border: .5px solid white;
-
-
+    width: 99.9%;
 }
 
 #navinfo {
     color: white;
-
+    text-decoration: none;
+    margin-top:10px ;
+    font-size: 20px;
+    font-family: "Times New Roman"
 }
-
 
 #navinfo:hover {
     transform: scale(1.1);

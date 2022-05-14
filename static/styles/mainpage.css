@@ -7,25 +7,29 @@
 .headline{
     text-align: center;
     padding-bottom: 5px;
-    background: rgba(0, 0, 0, .6);
+    /* background: rgba(0, 0, 0, .6); */
     color: white;
     font-size: 1rem;
 }
 
 #navbar {
     display: flex;
-    justify-content: space-between;
+    position: relative;
+    justify-content: space-evenly;
     padding: 5px;
     color: white;
     background: black;
     border: .5px solid white;
-
-
+    width: 99.9%;
+    height: 60%;
 }
 
 #navinfo {
     color: white;
-
+    margin-top:10px ;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Times New Roman"
 }
 
 
@@ -47,7 +51,7 @@
     border: 2.5px solid white;
     padding: 8px;
     background: rgba(0, 0, 0, 0.5);
-
+    font-family: "Times New Roman"
 }
 
 #bform {
@@ -58,7 +62,8 @@
     color: white;
     border: 2.5px solid white;
     padding: 8px;
-    background: rgba(0, 0, 0, 0.5)
+    background: rgba(0, 0, 0, 0.5);
+    font-family: "Times New Roman"
 }
 
 

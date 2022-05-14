@@ -1,11 +1,21 @@
 body {
-
     background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://kjsce.somaiya.edu/upload_file/images20/JVB_0002.JPG);
     background-size: cover;
     background-position: center;
-
 }
 
+#maintitle {
+    padding: 5px 5px 5px 0;
+    background: rgba(0, 0, 0, .6);
+    color: white;
+}
+.headline{
+    text-align: center;
+    padding-bottom: 5px;
+   
+    color: white;
+    font-size: 1rem;
+}
 
 
 #title {
@@ -26,4 +36,32 @@ body {
 
     color: #3df5ff;
     transform: scale(1.1);
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 8px;
+    color: white;
+    background: black;
+    border: .5px solid white;
+    width: 99.9%;
+}
+
+#navinfo {
+    color: white;
+    text-decoration: none;
+    margin-top:10px ;
+    font-size: 20px;
+    font-family: "Times New Roman"
+}
+#logo {
+    height: 105.2px;
+    width: 304.8px;
+}
+
+#navinfo:hover {
+    transform: scale(1.1);
+    color: #3df5ff;
+
 }

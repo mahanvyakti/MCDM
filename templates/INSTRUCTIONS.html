@@ -2,44 +2,16 @@
 <title>INSTRUCTIONS</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/INSTRUCTIONS.CSS') }}">
 {% endblock %}
-
+    
 {% block content %}
-{% include 'partials/header.html' %}
-
-<body>
-
-
-    <div id="navbar">
-        <a href="https://codepen.io/jayant_jry/full/zYpqXaM" target="_blank" id="navinfo">
-            <p> MCDM THEORY </p>
-        </a>
-
-        <a href="/instructions" id="navinfo">
-            <p>INSTRUCTIONS MANUAL</p>
-        </a>
-
-        <a href="#MCDM SIMULATOR" id="navinfo">
-            <p>MCDM SIMULATOR</p>
-        </a>
-
-        <a href="https://kjsce.somaiya.edu/en" id="navinfo" target="_blank">
-            <p>ABOUT KJSCE</p>
-        </a>
-
-        <a href="/contact" id="navinfo">
-            <p> CONTACT US</p>
-        </a>
-
-    </div><br><br>
-
-
     <center>
-        <h1 style="color: white"><u>INSTRUCTIONS MANUAL</u></h1>
+        {% include 'partials/header.html' %} 
+        <h1  style="color: rgb(255, 246, 246); font-family:Times New Roman;">INSTRUCTIONS</h1>
     </center>
 
     <div id="SWARA">
-        <h2>A) SWARA</h2>
-        <p>
+        <h2 style="font-family:Times New Roman;">A) SWARA</h2>
+        <p style="font-family:Times New Roman;">
         <ol>
 
             <li>Click on ‘MCDM Simulator’ on the Navigation Bar.</li><br>
@@ -79,7 +51,7 @@
     <br>
 
     <div id="TOPSIS">
-        <h2>B) TOPSIS</h2>
+        <h2 style="font-family:Times New Roman;">B) TOPSIS</h2>
         <ol>
             <li>Click on ‘MCDM Simulator’ on the Navigation Bar.</li><br>
 
