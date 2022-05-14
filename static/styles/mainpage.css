@@ -13,23 +13,29 @@
 }
 
 #navbar {
+    width: 99.5%;
+    height: 100%;
     display: flex;
     position: relative;
     justify-content: space-evenly;
     padding: 5px;
     color: white;
-    background: black;
+    background: rgba(0, 0, 0, 0.5);
     border: .5px solid white;
     width: 99.9%;
     height: 60%;
 }
 
 #navinfo {
+
     color: white;
     margin-top:10px ;
     text-decoration: none;
     font-size: 20px;
     font-family: "Times New Roman"
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: large;
 }
 
 
@@ -91,7 +97,7 @@ button:hover {
 }
 
 body {
-    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(https://kjsce.somaiya.edu/upload_file/images20/JVB_0002.JPG);
+    background-image: linear-gradient(115deg, rgba(0, 0, 0, 1), rgba(136, 136, 206, 0.7)), url(http://www.sbgimiraj.org/upload/images/mechdipl.gif);
     background-size: cover;
     background-position: center;
 }
