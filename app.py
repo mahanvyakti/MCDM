@@ -98,13 +98,19 @@ def resultSWARA():
         sub_sj = get_ordered_dict(splitted_sub_sj, float_val=True)
         
         criteria_dict = OrderedDict()
+        ordered_criteria_dict = OrderedDict()
         for main_criterion, sj in main_sj.items():
             criteria_dict[main_criterion] = []
+            ordered_criteria_dict[main_criterion] = []
         
         for sub_criterion, main_criterion in sub_to_main.items():
             criteria_dict[main_criterion].append(sub_criterion)
 
-        res, kj_main, qj_main, wj_main, kj_sub, qj_sub, wj_sub, criteria_dict, ranks, global_weights = swara_result(main_sj, sub_sj, sub_to_main, criteria_dict)
+        for sub_criterion, sj in sub_sj.items():
+            main_criterion = sub_to_main[sub_criterion]
+            ordered_criteria_dict[main_criterion].append(sub_criterion)
+
+        res, kj_main, qj_main, wj_main, kj_sub, qj_sub, wj_sub, criteria_dict, ranks, global_weights = swara_result(main_sj, sub_sj, sub_to_main, criteria_dict, ordered_criteria_dict)
         return render_template('swaraResult.html', res=res, kj_main=kj_main, qj_main=qj_main, wj_main=wj_main, kj_sub=kj_sub, qj_sub=qj_sub, wj_sub=wj_sub, criteria_dict=criteria_dict, ranks=ranks, global_weights=global_weights)
         # return redirect(url_for('result',data=request.form.get("data")),code=307)
 
