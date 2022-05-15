@@ -38,8 +38,10 @@ function countAndUpdateLists(event){
     
     var name = event.target.name;
     var id = event.target.id;
-    var list = $(`#${id}`).val();
+    var list = $(`[id='${id}']`).val();
+    console.log(`id`);
     console.log(id);
+    console.log(`list`);
     console.log(list);
     var splittedList = list.split(",");
     var cleanedList = [];
