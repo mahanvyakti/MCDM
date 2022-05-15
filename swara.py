@@ -1,5 +1,6 @@
 import statistics as stats
 from collections import OrderedDict
+import json
 
 sub_to_main = OrderedDict()
 
@@ -253,8 +254,43 @@ def calculate_kj_qj(sj_dict):
 
     return kj_dict, qj_dict
 
+def calculate_sub_kj_qj(sub_sj_dict, criteria_dict):
+    """
+       Calculates kj and qj values.
+        
+        Parameters:
+        ------- 
+            `sj_dict`: list of sj values.
+        Returns:
+        kj and qj list.
+    """
+    kj_dict = OrderedDict()
+    qj_dict = OrderedDict()
+    qj_prev = 1
+    
+    # Assuming criteria_dict contains ordred list of sub criteria for each main criterion
+    for main_criterion, sub_criteria_list in criteria_dict.items():
+        qj_prev = 1
+        for sub_criterion in sub_criteria_list:
+            print(f'Calculating kj, qj values for sub criteria of ${main_criterion}')
+            sj = sub_sj_dict[sub_criterion]
+            kj = sj + 1
+            qj = qj_prev / kj
+            qj_prev = qj
 
-def calculate_weights(sj_dict):
+            kj_dict[sub_criterion] = kj
+            qj_dict[sub_criterion] = qj
+    
+    print("Got the kj values:")
+    print(json.dumps(kj_dict, indent=4))
+    
+    print("Got the qj values:")
+    print(json.dumps(qj_dict, indent=4))
+
+    return kj_dict, qj_dict
+
+
+def calculate_weights(sj_dict, criteria_dict, sub_criteria=False):
     """
        Calculates wj values.
         
@@ -264,16 +300,38 @@ def calculate_weights(sj_dict):
         Returns:
         wj list.
     """
-    kj_dict, qj_dict = calculate_kj_qj(sj_dict)
-    
     wj_dict = OrderedDict()
-    qj_sum = 0
+    if sub_criteria:
+        print("Calculations for sub criteria:")
+        kj_dict, qj_dict = calculate_sub_kj_qj(sj_dict, criteria_dict)
+        
+
+        for main_criterion, sub_criteria_list in criteria_dict.items():
+            qj_sum = 0
+            for sub_criterion in sub_criteria_list:
+                # for qj in qj_dict.values():
+                qj_sum += qj_dict[sub_criterion]
+            
+            for sub_criterion in sub_criteria_list:
+                qj = qj_dict[sub_criterion]
+                wj_dict[sub_criterion] = (qj / qj_sum)
+    else:
+        print("Calculations for main criteria")
+        kj_dict, qj_dict = calculate_kj_qj(sj_dict)
+
+        qj_sum = 0
+        for qj in qj_dict.values():
+            qj_sum += qj
     
-    for qj in qj_dict.values():
-        qj_sum += qj
+        for criterion, qj in qj_dict.items():
+            wj_dict[criterion] = qj / qj_sum
     
-    for criterion, qj in qj_dict.items():
-        wj_dict[criterion] = qj / qj_sum
+    print("Final kj values:")
+    print(json.dumps(kj_dict, indent=4))
+    print("Final qj values:")
+    print(json.dumps(qj_dict, indent=4))
+    print("Final wj values:")
+    print(json.dumps(wj_dict, indent=4))
     
     return kj_dict, qj_dict, wj_dict
 
@@ -355,9 +413,9 @@ def print_results(criteria_dict, wj_main, wj_sub, ranks, global_weights):
 
     return res
 
-def get_result(main_sj, sub_sj, sub_to_main, criteria_dict):
-    kj_main, qj_main, wj_main = calculate_weights(main_sj)
-    kj_sub, qj_sub, wj_sub =  calculate_weights(sub_sj)
+def get_result(main_sj, sub_sj, sub_to_main, criteria_dict, ordered_criteria_dict):
+    kj_main, qj_main, wj_main = calculate_weights(main_sj, criteria_dict)
+    kj_sub, qj_sub, wj_sub =  calculate_weights(sub_sj, ordered_criteria_dict, sub_criteria=True)
 
     # get global weigths
     global_weights = calculate_global_weights(wj_main, wj_sub, sub_to_main)
@@ -373,8 +431,8 @@ def get_result(main_sj, sub_sj, sub_to_main, criteria_dict):
 # if __name__ == "__main__":
 #     criteria_dict, main_importance, sub_importance, sorted_main_imp, sorted_sub_imp, main_sj, sub_sj = get_inputs()
     
-#     kj_main, qj_main, wj_main = calculate_weights(main_sj)
-#     kj_sub, qj_sub, wj_sub =  calculate_weights(sub_sj)
+#     kj_main, qj_main, wj_main = calculate_weights(main_sj, criteria_dict)
+#     kj_sub, qj_sub, wj_sub =  calculate_weights(sub_sj, criteria_dict, sub_criteria=True)
 
 #     # get global weigths
 #     global_weights = calculate_global_weights(wj_main, wj_sub, sub_to_main)
@@ -382,4 +440,4 @@ def get_result(main_sj, sub_sj, sub_to_main, criteria_dict):
 #     # sort on the basis of global weights
 #     ranks = sort_sub_criteria(global_weights)
 
-#    print_results(criteria_dict, wj_main, wj_sub, ranks)
+#     print_results(criteria_dict, wj_main, wj_sub, ranks, global_weights)
