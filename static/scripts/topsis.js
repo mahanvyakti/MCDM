@@ -23,7 +23,7 @@ $(function() {
 
         var name = event.target.name;
         var id = event.target.id;
-        var list = $(`#${id}`).val();
+        var list = $(`[id='${id}']`).val();
         console.log(id);
         console.log(list);
         var splittedList = list.split(",");
