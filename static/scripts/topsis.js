@@ -122,7 +122,7 @@ $(function() {
         html += "<div>"
         html += "<div class=' align-items-center'>";
         html += `<p class='mb-2 mr-6'>Weight for ${criterionName}</p>`;
-        html += `<input id='criterion-weight-for--${criterionName}--${criterionIndex}' type='text' name='criterion-weight-for-${criterionName}-${criterionIndex}' class='criteria-weight ml-2 form-control m-input' placeholder='Enter weight for ${criterionName}' autocomplete='off'>`;
+        html += `<input id='criterion-weight-for--${criterionName}--${criterionIndex}' type="number" name='criterion-weight-for-${criterionName}-${criterionIndex}' class='criteria-weight ml-2 form-control m-input' placeholder='Enter weight for ${criterionName}' autocomplete='off'>`;
         html += "</div>";
         html += "<hr/>";
         html += "</div>";
@@ -139,7 +139,7 @@ $(function() {
             html += "<div>"
             html += "<div class=' align-items-center'>";
             html += `<p class='mb-2 mr-6'>Enter value of ${criterionName}</p>`;
-            html += `<input id='criterion-value-for--${alternativeName}--${alternativeIndex}--${criterionName}--${criterionIndex}' type='text' name='criterion-value-for-${alternativeName}-${alternativeIndex}-${criterionName}-${criterionIndex}' class='criterion-value-for-alternative ml-2 form-control m-input' placeholder='Enter criterion value of criterion ${criterionName} for ${alternativeName}' autocomplete='off'>`;
+            html += `<input id='criterion-value-for--${alternativeName}--${alternativeIndex}--${criterionName}--${criterionIndex}'type="number" name='criterion-value-for-${alternativeName}-${alternativeIndex}-${criterionName}-${criterionIndex}' class='criterion-value-for-alternative ml-2 form-control m-input' placeholder='Enter criterion value of criterion ${criterionName} for ${alternativeName}' autocomplete='off'>`;
             html += "</div>";
             // html += `<div id='inputFormSubCriteria-${mainCriterionName}-${mainCriterionIndex}' class=' mb-3'>`;
             // html += `<small id='subCriteriaHelpBlock-${mainCriterionName}-${mainCriterionIndex}' class='form-text text-muted'>`;

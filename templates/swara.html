@@ -102,7 +102,7 @@
                     <button id="editCriteriaDetails" type="button" class="btn btn-info" disabled>Edit Criteria Details</button>
                 </div>
                 <div class="col-sm py-2">
-                    <button id="sortImportance" type="button" class="btn btn-warning">Add Comparative Significance</button>
+                    <button id="sortImportance" onclick="validate()" type="button" class="btn btn-warning">Add Comparative Significance</button>
                 </div>
             </div>
         </div>
@@ -151,6 +151,7 @@
             <h2 id="sub-criteria-count" style="color: white;">0</h2>
             <h2 style="color: white;">Comparative Significance</h2>
         </div>
+
         <div>
             <form id="requiredDataForm" method="post" action="/resultSWARA" hidden>
                 <input type="hidden" name="sub_to_main" id="sub_to_main">

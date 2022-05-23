@@ -1,7 +1,9 @@
 #maintitle {
     padding: 5px 5px 5px 0;
-    background: rgba(0, 0, 0, .6);
+    background: rgba(0, 0, 0, .7);
     color: white;
+    width: 100.1%;
+    margin-top: -1%;
 }
 
 .headline {
@@ -20,8 +22,9 @@
 #navbar {
     display: flex;
     justify-content: space-evenly;
+    padding: 3px;
     color: white;
-    background: black;
+    background: rgba(0, 0, 0, .7);
     border: .5px solid white;
     width: 99.9%;
 }
