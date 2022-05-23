@@ -1,5 +1,6 @@
 from collections import OrderedDict
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
 
 from swara import get_result as swara_result
 from topsis import get_result as topsis_result
@@ -10,12 +11,62 @@ import os
 
 IMAGES = os.path.join('static', 'images')
 
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///KJSCE.sqlite3'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tkvxhdrshbpmyq:c65783a1f2eb28f0bca347bda68e7fe69753f097a425412cef7af05f40fc0ad0@ec2-34-201-95-176.compute-1.amazonaws.com:5432/d27o2q2hn4241e'
+app.config['SECRET_KEY'] = "random string"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
+db = SQLAlchemy(app)
+
+class KJSCE(db.Model):
+   id = db.Column('student_id', db.Integer, primary_key = True)
+   name = db.Column(db.String(100))
+   college = db.Column(db.String(100))
+   suggestions = db.Column(db.String(100))
+   
+   def __init__(self,name,college,suggestions):
+       self.name=name
+       self.college = college
+       self.suggestions=suggestions
+            
+  
+      
+
 app.config['UPLOAD_FOLDER'] = IMAGES
 
-@app.route('/')
-def mainPage():
-    return render_template('mainpage.html')
+@app.route('/new')
+def new():
+    flash('Record was successfully added')
+    return render_template('afterfe.html',students = KJSCE.query.all())
+   
+    
 
+@app.route('/feedback', methods = ['POST'])
+def feedback():
+   
+    if not request.form['name'] or not request.form['college'] or not request.form['suggestions'] :
+         flash('Please enter all the fields', 'error')
+    student = KJSCE(request.form['name'],request.form['college'],request.form['suggestions'])
+    
+    db.session.add(student)
+    db.session.commit() 
+    flash('Record was successfully added')
+    return redirect(url_for('new'))
+
+    
+
+
+@app.route('/')
+def maipage():
+   return render_template('mainpage.html')
+   
+
+
+if __name__ == '__main__':
+   db.create_all()
+   app.run(debug = True)
 
 @app.route('/topsis')
 def topsis():
@@ -134,8 +185,6 @@ def result():
     messages = request.form.get('data')  # counterpart for url_for()
     return render_template('hello.html', name=messages)
 
-if __name__ == '__main__':
-    app.run(debug = True)
 
 
 @app.route('/instructions')

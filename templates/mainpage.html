@@ -57,26 +57,29 @@
                     <a href="/swara"><button>SWARA: Stepwise Weight Assessment Ratio Analysis</button></a>
                 </p>
         </div>
-        <br />
-
+        <br /> {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
         <div id="bform">
             <p>Liked Our Simulation? We would love to hear back from you: Praises, Critiscism, Suggestions are all welcome!</p>
-            <form id="myForm">
+            <form action="{{ url_for('feedback') }}" method="post" id="myForm">
 
-                <p style="font-family:Times New Roman;">1. YOUR NAME: </p><input type="text" id="name" placeholder="Name"><br>
-                <p style="font-family:Times New Roman;">2. COLLEGE/INSTITUTION: </p><input type="text" id="inst" placeholder=" COLLEGE/INSTITUTION:"><br>
-                <p style="font-family:Times New Roman;">3. DESIGNATION: </p>
-                <select name="DESIGNATION" id="dropdown" style="font-family:Times New Roman;">
-                    <option value="Student">Student</option>
-                    <option value="Professor">Professor</option>
-                    <option value="Researcher">Researcher</option>
-                    <option value="Industry">Industry</option>
-                    <option value="Other">Other</option>
+                <p style="font-family:Times New Roman; ">1. YOUR NAME: </p><input type="text " id="name" name="name" placeholder="Name"><br>
+                <p style="font-family:Times New Roman; ">2. COLLEGE/INSTITUTION: </p><input type="text" id="inst" name="college" placeholder=" COLLEGE/INSTITUTION: "><br>
+                <p style="font-family:Times New Roman; ">3. DESIGNATION: </p>
+                <select name="DESIGNATION " id="dropdown" style="font-family:Times New Roman; ">
+                    <option value="Student ">Student</option>
+                    <option value="Professor ">Professor</option>
+                    <option value="Researcher ">Researcher</option>
+                    <option value="Industry ">Industry</option>
+                    <option value="Other ">Other</option>
                 </select>
-                <p style="font-family:Times New Roman;">4. ENTER YOUR SUGGESTIONS BELOW:</p>
+                <p style="font-family:Times New Roman; ">4. ENTER YOUR SUGGESTIONS BELOW:</p>
 
-                <textarea id="suggestions"> </textarea><br><br>
-                <input type="button" onclick="validate()" value="Confirm ">
+                <textarea id="suggestions" name="suggestions"> </textarea><br><br>
+                <input type="submit" onclick="validate()" value="Confirm">
             </form>
 
         </div>

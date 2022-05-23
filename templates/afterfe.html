@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}
+<title>MCDM: LY Project</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/mainpage.css') }}"> {% endblock %}
+
+<body>
+    {% block content %} {% include 'partials/header.html' %}
+
+
+    <br><br>
+    <div id="form">
+        <div id="aform">
+            <center>
+
+                <p style="font-family:Times New Roman;" id="MCDM SIMULATOR">Please select the MCDM Technique Do You Want To Use?</p>
+
+                <p>
+                    <a href="/topsis"><button>TOPSIS: Technique for Order of Preference by Similarity to Ideal Solution</button></a>
+                </p>
+                <p>
+                    <a href="/swara"><button>SWARA: Stepwise Weight Assessment Ratio Analysis</button></a>
+                </p>
+        </div>
+        <br /> {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        <div id="bform">
+            <center>
+                <h1>Thank You for your Feedback!</h1>
+            </center>
+        </div>
+    </div>
+
+    {% endblock %}
