@@ -12,9 +12,9 @@ import os
 IMAGES = os.path.join('static', 'images')
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///KJSCE.sqlite3'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///KJSCE.sqlite3'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tkvxhdrshbpmyq:c65783a1f2eb28f0bca347bda68e7fe69753f097a425412cef7af05f40fc0ad0@ec2-34-201-95-176.compute-1.amazonaws.com:5432/d27o2q2hn4241e'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://tkvxhdrshbpmyq:c65783a1f2eb28f0bca347bda68e7fe69753f097a425412cef7af05f40fc0ad0@ec2-34-201-95-176.compute-1.amazonaws.com:5432/d27o2q2hn4241e'
 app.config['SECRET_KEY'] = "random string"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -38,7 +38,6 @@ app.config['UPLOAD_FOLDER'] = IMAGES
 
 @app.route('/new')
 def new():
-    flash('Record was successfully added')
     return render_template('afterfe.html',students = KJSCE.query.all())
    
     
