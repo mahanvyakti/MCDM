@@ -258,7 +258,7 @@ $(function() {
                 html += "<div>"
                 html += "<div class=' align-items-center'>";
                 html += `<p class='mb-2 mr-6'>By ${expert}</p>`;
-                html += `<input id='importance-rating-for-sub-criteria-of--${mainCriterionName}--${mainCriterionIndex}--${expert}' type="number" name='importance-rating-for-sub-criteria-of-${mainCriterionName}-${mainCriterionIndex}' class='importance-rating-for-sub-criteria ml-2 form-control m-input' placeholder='Enter importance ratings for sub criteria of main criterion ${mainCriterionName} by expert ${expert}' autocomplete='off'>`;
+                html += `<input id='importance-rating-for-sub-criteria-of--${mainCriterionName}--${mainCriterionIndex}--${expert}' type="text" name='importance-rating-for-sub-criteria-of-${mainCriterionName}-${mainCriterionIndex}' class='importance-rating-for-sub-criteria ml-2 form-control m-input' placeholder='Enter importance ratings for sub criteria of main criterion ${mainCriterionName} by expert ${expert}' autocomplete='off'>`;
                 html += "</div>";
                 html += `<div id='inputFormSubCriteriaImportance-${mainCriterionName}-${mainCriterionIndex}-${expert}' class=' mb-3'>`;
                 html += `<small id='subCriteriaImportanceHelpBlock-${mainCriterionName}-${mainCriterionIndex}-${expert}' class='form-text text-muted'>`;
