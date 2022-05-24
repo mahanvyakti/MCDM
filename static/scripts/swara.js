@@ -319,7 +319,7 @@ $(function() {
             html += "<div>"
             html += "<div class=' align-items-center'>";
             html += `<p class='mb-2 mr-6'>By ${expert}</p>`;
-            html += `<input id="sx" id='sj-value-for-main-criterion--${mainCriterionName}--${mainCriterionIndex}--${expert}'  type="number" name='sj-value-for-main-criterion-${mainCriterionName}-${mainCriterionIndex}' class='sj-value-for-main-criterion ml-2 form-control m-input' placeholder='Enter Comparative Significance (Sj) value for main criterion ${mainCriterionName} by expert ${expert}' autocomplete='off'>`;
+            html += `<input id='sj-value-for-main-criterion--${mainCriterionName}--${mainCriterionIndex}--${expert}'  type="number" name='sj-value-for-main-criterion-${mainCriterionName}-${mainCriterionIndex}' class='sj-value-for-main-criterion ml-2 form-control m-input' placeholder='Enter Comparative Significance (Sj) value for main criterion ${mainCriterionName} by expert ${expert}' autocomplete='off'>`;
             html += "</div>";
             // html += `<div id='inputFormSubCriteria-${mainCriterionName}-${mainCriterionIndex}' class=' mb-3'>`;
             // html += `<small id='subCriteriaHelpBlock-${mainCriterionName}-${mainCriterionIndex}' class='form-text text-muted'>`;
