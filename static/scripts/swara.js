@@ -226,7 +226,7 @@ $(function() {
             html += "<div>"
             html += "<div class=' align-items-center'>";
             html += `<p class='mb-2 mr-6'>By ${expert}</p>`;
-            html += `<input id='importance-rating-for-main-criterion--${mainCriterionName}--${mainCriterionIndex}--${expert}' type="text"   name='importance-rating-for-main-criterion-${mainCriterionName}-${mainCriterionIndex}' class='importance-rating-for-main-criterion ml-2 form-control m-input' placeholder='Enter importance rating for main criterion ${mainCriterionName} by expert ${expert}' autocomplete='off'>`;
+            html += `<input id='importance-rating-for-main-criterion--${mainCriterionName}--${mainCriterionIndex}--${expert}' type="number"   name='importance-rating-for-main-criterion-${mainCriterionName}-${mainCriterionIndex}' class='importance-rating-for-main-criterion ml-2 form-control m-input' placeholder='Enter importance rating for main criterion ${mainCriterionName} by expert ${expert}' autocomplete='off'>`;
             html += "</div>";
             // html += `<div id='inputFormSubCriteria-${mainCriterionName}-${mainCriterionIndex}' class=' mb-3'>`;
             // html += `<small id='subCriteriaHelpBlock-${mainCriterionName}-${mainCriterionIndex}' class='form-text text-muted'>`;
@@ -345,7 +345,7 @@ $(function() {
             if (idx === 0) {
                 mainCriteriaSjHTML += "<div>";
                 mainCriteriaSjHTML += `<h5>Mean comparative Significance (S<sub>j</sub>) value  for main criterion ${criterion}</h5>`
-                mainCriteriaSjHTML += `<input id='sj-value-for-main-criterion--${criterion}--${index}--all' type="text" name='sj-value-for-main-criterion-${criterion}-${index}' class='sj-value-for-main-criterion ml-2 form-control m-input' placeholder='0' value="0" disabled autocomplete='off'>`;
+                mainCriteriaSjHTML += `<input id='sj-value-for-main-criterion--${criterion}--${index}--all' type="number" name='sj-value-for-main-criterion-${criterion}-${index}' class='sj-value-for-main-criterion ml-2 form-control m-input' placeholder='0' value="0" disabled autocomplete='off'>`;
                 mainCriteriaSjHTML += "<hr/>";
                 mainCriteriaSjHTML += "</div>";
             } else {
@@ -368,7 +368,7 @@ $(function() {
             html += "<div>"
             html += "<div class=' align-items-center'>";
             html += `<p class='mb-2 mr-6'>S<sub>j</sub> value for ${scName} by ${expert}</p>`;
-            html += `<input id='sj-value-for-sub-criterion--${mcName}--${mcIndex}--${scName}--${scIndex}--${expert}' type="text"  name='sj-value-for-sub-criteria-${mcName}-${mcIndex}-${scName}-${scIndex}-by-${expert}' class='sj-value-for-sub-criteria ml-2 form-control m-input' placeholder='Enter Sj values for remaining sub criteria of main criterion ${mcName} by expert ${expert}' autocomplete='off'>`;
+            html += `<input id='sj-value-for-sub-criterion--${mcName}--${mcIndex}--${scName}--${scIndex}--${expert}' type="number"  name='sj-value-for-sub-criteria-${mcName}-${mcIndex}-${scName}-${scIndex}-by-${expert}' class='sj-value-for-sub-criteria ml-2 form-control m-input' placeholder='Enter Sj values for remaining sub criteria of main criterion ${mcName} by expert ${expert}' autocomplete='off'>`;
             html += "</div>";
             // html += `<div id='inputFormSubCriteria-${mainCriterionName}-${mainCriterionIndex}' class=' mb-3'>`;
             // html += `<small id='subCriteriaHelpBlock-${mainCriterionName}-${mainCriterionIndex}' class='form-text text-muted'>`;
@@ -406,7 +406,7 @@ $(function() {
 
                     subCriteriaSjHTML += "<div>";
                     subCriteriaSjHTML += `<h6>Mean comparative Significance (S<sub>j</sub>) value  for subcriterion ${scName} </h6>`
-                    subCriteriaSjHTML += `<input id='sj-value-for-sub-criterion--${mcName}--${mcIndex}--${scName}--${scIndex}--all' type="text"  name='sj-value-for-sub-criteria-${mcName}-${mcIndex}-${scName}-${scIndex}-by-all' class='sj-value-for-sub-criteria ml-2 form-control m-input' placeholder='0' value="0" disabled autocomplete='off'>`;
+                    subCriteriaSjHTML += `<input id='sj-value-for-sub-criterion--${mcName}--${mcIndex}--${scName}--${scIndex}--all' type="number"  name='sj-value-for-sub-criteria-${mcName}-${mcIndex}-${scName}-${scIndex}-by-all' class='sj-value-for-sub-criteria ml-2 form-control m-input' placeholder='0' value="0" disabled autocomplete='off'>`;
                     subCriteriaSjHTML += "<hr class'mx-1'/>";
                     subCriteriaSjHTML += "</div>";
                     subCriteriaSj[`${mcName}-${mcIndex}-${scName}-${scIndex}-all`] = 0;
